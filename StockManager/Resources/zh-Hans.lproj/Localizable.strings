@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  StockManager
+
+  Created by Chavalit Vanasapdamrong on 23/5/2565 BE.
+  
+*/
+
+// Main
+MAIN-EMAIL_HINT = "Email";
+MAIN-PASSWORD_HINT = "Password";
