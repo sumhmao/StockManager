@@ -7,5 +7,5 @@
 */
 
 // Main
-MAIN-EMAIL_HINT = "Email";
-MAIN-PASSWORD_HINT = "Password";
+MAIN-EMAIL_HINT = "XXXXX";
+MAIN-PASSWORD_HINT = "ZZZZZZ";

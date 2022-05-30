@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+enum Localization {
+
+    enum Main {
+        static var emailHint: String {
+            return "MAIN-EMAIL_HINT".localized()
+        }
+        static var passwordHint: String {
+            return "MAIN-PASSWORD_HINT".localized()
+        }
+    }
+
+}

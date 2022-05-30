@@ -6,3 +6,28 @@
 //
 
 import Foundation
+import RxSwift
+
+final class MainViewModel: ViewModelType {
+
+    struct Input {
+
+    }
+    struct Output {
+        
+    }
+
+    let input: Input
+    let output: Output
+
+    private let disposeBag = DisposeBag()
+
+    init() {
+        self.input = Input(
+
+        )
+        self.output = Output(
+
+        )
+    }
+}

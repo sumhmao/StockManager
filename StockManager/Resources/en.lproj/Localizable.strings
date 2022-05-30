@@ -7,5 +7,5 @@
 */
 
 // Main
-MAIN-EMAIL_HINT = "อีเมล";
-MAIN-PASSWORD_HINT = "รหัสผ่าน";
+MAIN-EMAIL_HINT = "Email";
+MAIN-PASSWORD_HINT = "Password";

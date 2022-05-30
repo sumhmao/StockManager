@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import RxSwift
+
+final class MainCoordinator: BaseCoordinator {
+
+    private var mainViewController: MainViewController!
+    private let disposeBag = DisposeBag()
+
+    override func start() {
+        let viewModel = MainViewModel()
+        mainViewController = MainViewController()
+        mainViewController.configure(with: viewModel)
+        navigationController.setViewControllers([mainViewController], animated: true)
+    }
+
+}

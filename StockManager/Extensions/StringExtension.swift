@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+extension String {
+
+    func trim() -> String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    func localized() -> String {
+        return LanguageManager.sharedInstance.get(self)
+    }
+
+}
