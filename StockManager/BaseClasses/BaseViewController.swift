@@ -32,4 +32,19 @@ class BaseViewController: UIViewController {
 
     func localizeItems() {}
 
+    func showAlert(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+
+    func showLoading(completion: (() -> Void)? = nil) {
+        LoadingController.showLoading(completion: completion)
+    }
+
+    func hideLoading(completion: (() -> Void)? = nil) {
+        LoadingController.hideLoading(completion: completion)
+    }
+
 }

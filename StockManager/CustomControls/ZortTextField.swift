@@ -219,7 +219,7 @@ public final class ZortTextField: UITextField {
             self.unitTextColor = .zortTextfieldText
             self.typingTextColor = .zortTextfieldText
             self.errorTextColor = .zortTextfieldText
-            self.errorBorderColor = .clear
+            self.errorBorderColor = .red
             self.editingBorderColor = .clear
             self.layer.borderColor = self.borderColor.cgColor
             self.font = customFont ?? appFont

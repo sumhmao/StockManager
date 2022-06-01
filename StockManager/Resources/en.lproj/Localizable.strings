@@ -6,6 +6,10 @@
   
 */
 
+// Shared
+SHARED-LOADING = "Loading...";
+
 // Main
 MAIN-EMAIL_HINT = "Email";
 MAIN-PASSWORD_HINT = "Password";
+MAIN-LOGIN_BUTTON = "LOGIN";

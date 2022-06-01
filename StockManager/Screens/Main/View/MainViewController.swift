@@ -27,19 +27,25 @@ final class MainViewController: StackButtonViewController {
         textField.isUserInteractionEnabled = true
         textField.validation = { (text) -> Bool in
             guard let text = text else { return false }
-            return text.trim().count > 0
+            return text.trim().count > 0 && text.isValidEmail
         }
         return textField
     }()
 
     private lazy var passwordTextField: ZortTextField = {
         let textField = ZortTextField()
+        textField.isSecureTextEntry = true
         textField.isUserInteractionEnabled = true
         textField.validation = { (text) -> Bool in
             guard let text = text else { return false }
             return text.trim().count > 0
         }
         return textField
+    }()
+
+    private lazy var loginButton: ZortButton = {
+        let button = ZortButton()
+        return button
     }()
 
     override func viewDidLoad() {
@@ -56,27 +62,48 @@ final class MainViewController: StackButtonViewController {
         hideButtonSection(hide: true)
         addContent(view: logoView, spaceAfter: 59.38)
         addContent(view: emailTextField, spaceAfter: 16)
-        addContent(view: passwordTextField)
+        addContent(view: passwordTextField, spaceAfter: 28)
+        addContent(view: loginButton)
     }
 
     private func addValidation() {
-//        let isButtonEnable = Observable<Bool>.combineLatest(
-//            emailTextField.validateState.share(replay: 1, scope: .whileConnected),
-//            passwordTextField.validateState.share(replay: 1, scope: .whileConnected)
-//        ) {
-//            (email, password) in
-//            return (email == .passed) && (password == .passed)
-//        }
-//        isButtonEnable.bind(to: button.rx.isEnabled).disposed(by: disposeBag)
+        let isButtonEnable = Observable<Bool>.combineLatest(
+            emailTextField.validateState.share(replay: 1, scope: .whileConnected),
+            passwordTextField.validateState.share(replay: 1, scope: .whileConnected)
+        ) {
+            (email, password) in
+            return (email == .passed) && (password == .passed)
+        }
+        isButtonEnable.bind(to: loginButton.rx.isEnabled).disposed(by: disposeBag)
     }
 
     override func localizeItems() {
         emailTextField.placeholder = Localization.Main.emailHint
         passwordTextField.placeholder = Localization.Main.passwordHint
+        loginButton.setTitle(Localization.Main.loginButton, for: .normal)
     }
 
     func configure(with viewModel: MainViewModel) {
         self.viewModel = viewModel
+
+        emailTextField.rx.text.bind(to: viewModel.input.username).disposed(by: disposeBag)
+        passwordTextField.rx.text.bind(to: viewModel.input.password).disposed(by: disposeBag)
+        
+        loginButton.rx.tap.subscribe(onNext: { [weak self] (_) in
+            self?.viewModel.input.loginTap.onNext(())
+        }).disposed(by: disposeBag)
+
+        viewModel.output.showLoading.subscribe(onNext: { [weak self] (loading) in
+            if loading {
+                self?.showLoading()
+            } else {
+                self?.hideLoading()
+            }
+        }).disposed(by: disposeBag)
+
+        viewModel.output.failToLogin.subscribe(onNext: { [weak self] (error) in
+            self?.showAlert(title: "Error", message: error.localizedDescription)
+        }).disposed(by: disposeBag)
     }
 
 }

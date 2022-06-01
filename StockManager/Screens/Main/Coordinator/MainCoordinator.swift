@@ -10,11 +10,13 @@ import RxSwift
 
 final class MainCoordinator: BaseCoordinator {
 
+    let navigateToDashboard = PublishSubject<Void>()
     private var mainViewController: MainViewController!
     private let disposeBag = DisposeBag()
 
     override func start() {
         let viewModel = MainViewModel()
+        viewModel.output.loginSucceed.bind(to: navigateToDashboard).disposed(by: disposeBag)
         mainViewController = MainViewController()
         mainViewController.configure(with: viewModel)
         navigationController.setViewControllers([mainViewController], animated: true)

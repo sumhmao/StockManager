@@ -32,14 +32,7 @@ class ContentStackView: UIStackView {
     public func addContent(view: UIView, spaceAfter space: CGFloat? = nil) {
         addArrangedSubview(view)
         if let space = space {
-            if #available(iOS 11.0, *) {
-                setCustomSpacing(space, after: view)
-            } else {
-                let spaceView = UIView()
-                spaceView.backgroundColor = .clear
-                spaceView.heightAnchor.constraint(equalToConstant: space).isActive = true
-                addArrangedSubview(spaceView)
-            }
+            setCustomSpacing(space, after: view)
         }
     }
 
@@ -108,15 +101,15 @@ class StackButtonViewController: BaseViewController {
         buttonPanel.addSubview(buttonStackView)
 
         bottomView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaBottom)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin)
             make.left.bottom.right.equalToSuperview()
         }
         buttonPanel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaBottom)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin)
         }
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaTop)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(buttonPanel.snp.top)
         }
@@ -175,7 +168,7 @@ class StackButtonViewController: BaseViewController {
         view.insertSubview(contentView, at: 0)
         scrollView.removeFromSuperview()
         contentView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaTop)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(buttonStackView.snp.top).offset(-16)
         }

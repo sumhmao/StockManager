@@ -6,6 +6,10 @@
   
 */
 
+// Shared
+SHARED-LOADING = "กำลังโหลดข้อมูล...";
+
 // Main
 MAIN-EMAIL_HINT = "อีเมล";
 MAIN-PASSWORD_HINT = "รหัสผ่าน";
+MAIN-LOGIN_BUTTON = "เข้าสู่ระบบ";
