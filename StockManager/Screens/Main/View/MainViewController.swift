@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import SnapKit
 
 final class MainViewController: StackButtonViewController {
@@ -101,7 +102,7 @@ final class MainViewController: StackButtonViewController {
             }
         }).disposed(by: disposeBag)
 
-        viewModel.output.failToLogin.subscribe(onNext: { [weak self] (error) in
+        viewModel.output.onAPIError.subscribe(onNext: { [weak self] (error) in
             self?.showAlert(title: "Error", message: error.localizedDescription)
         }).disposed(by: disposeBag)
     }

@@ -10,6 +10,7 @@ import UIKit
 
 extension UIColor {
     static var mainBgColor: UIColor { return UIColor(hexString: "#EEF2F9") }
+    static var zortBranding: UIColor { return UIColor(hexString: "#22285A") }
 
     // Zort Button
     static var zortButtonBG: UIColor { return UIColor(hexString: "#4165ED") }
@@ -18,4 +19,8 @@ extension UIColor {
     // Zort Textfield
     static var zortTextfieldText: UIColor { return UIColor(hexString: "#000000") }
     static var zortTextfieldHint: UIColor { return UIColor(hexString: "#C7C7C7") }
+
+    // Side Menu
+    static var menuIconBGColor: UIColor { return UIColor(hexString: "#CBD4F5") }
+    static var menuSeparatorColor: UIColor { return UIColor(hexString: "#E5E5E5") }
 }

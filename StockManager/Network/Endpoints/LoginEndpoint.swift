@@ -28,6 +28,13 @@ struct LoginEndpoint: Endpoint {
         let merchantid: Int
         let displayname: String?
         let merchantname: String?
+        let userrole: UserRole?
+    }
+
+    struct UserRole: Codable {
+        let id: Int
+        let no: Int
+        let name: String?
     }
 
 }

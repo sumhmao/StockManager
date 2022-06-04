@@ -13,3 +13,12 @@ SHARED-LOADING = "Loading...";
 MAIN-EMAIL_HINT = "Email";
 MAIN-PASSWORD_HINT = "Password";
 MAIN-LOGIN_BUTTON = "LOGIN";
+
+// Side Menu
+SIDE_MENU-REPORT = "Report";
+SIDE_MENU-SELL_LIST = "Sell List";
+SIDE_MENU-BUY_LIST = "Buy List";
+SIDE_MENU-PRODUCTS = "Products";
+SIDE_MENU-WAREHOUSE = "Branches/Warehouses";
+SIDE_MENU-SETTINGS = "Settings";
+SIDE_MENU-LOGOUT = "Logout";

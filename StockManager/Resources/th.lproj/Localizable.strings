@@ -13,3 +13,12 @@ SHARED-LOADING = "กำลังโหลดข้อมูล...";
 MAIN-EMAIL_HINT = "อีเมล";
 MAIN-PASSWORD_HINT = "รหัสผ่าน";
 MAIN-LOGIN_BUTTON = "เข้าสู่ระบบ";
+
+// Side Menu
+SIDE_MENU-REPORT = "รายงาน";
+SIDE_MENU-SELL_LIST = "รายการขาย";
+SIDE_MENU-BUY_LIST = "รายการซื้อ";
+SIDE_MENU-PRODUCTS = "สินค้่า";
+SIDE_MENU-WAREHOUSE = "คลังสินค้า/สาขา";
+SIDE_MENU-SETTINGS = "ตั้งค่า";
+SIDE_MENU-LOGOUT = "ออกจากระบบ";

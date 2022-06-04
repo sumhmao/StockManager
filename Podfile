@@ -11,5 +11,6 @@ target 'StockManager' do
   pod 'Locksmith'
   pod 'Alamofire'
   pod 'IQKeyboardManagerSwift'
+  pod 'Wormholy', :configurations => ['Debug']
 
 end

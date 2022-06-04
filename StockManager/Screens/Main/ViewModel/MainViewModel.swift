@@ -18,7 +18,7 @@ final class MainViewModel: ViewModelType {
     struct Output {
         let showLoading: Observable<Bool>
         let loginSucceed: Observable<Void>
-        let failToLogin: Observable<Error>
+        let onAPIError: Observable<Error>
     }
 
     let input: Input
@@ -31,7 +31,7 @@ final class MainViewModel: ViewModelType {
 
     private let showLoading = PublishSubject<Bool>()
     private let loginSucceed = PublishSubject<Void>()
-    private let failToLogin = PublishSubject<Error>()
+    private let onAPIError = PublishSubject<Error>()
 
     init() {
         self.input = Input(
@@ -42,7 +42,7 @@ final class MainViewModel: ViewModelType {
         self.output = Output(
             showLoading: self.showLoading.asObservable(),
             loginSucceed: self.loginSucceed.asObservable(),
-            failToLogin: self.failToLogin.asObservable()
+            onAPIError: self.onAPIError.asObservable()
         )
 
         loginTap.withLatestFrom(Observable.combineLatest(username, password))
@@ -63,9 +63,10 @@ final class MainViewModel: ViewModelType {
             self?.loginSucceed.onNext(())
         }, onError: { [weak self] (error) in
             self?.showLoading.onNext(false)
-            self?.failToLogin.onNext(error)
+            self?.onAPIError.onNext(error)
         }).disposed(by: disposeBag)
     }
+    
 }
 
 fileprivate extension Merchant {

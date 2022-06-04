@@ -10,16 +10,17 @@ import RxSwift
 
 final class MainCoordinator: BaseCoordinator {
 
-    let navigateToDashboard = PublishSubject<Void>()
+    let loginComplete = PublishSubject<Void>()
     private var mainViewController: MainViewController!
     private let disposeBag = DisposeBag()
+    var animatedTransition: Bool = true
 
     override func start() {
         let viewModel = MainViewModel()
-        viewModel.output.loginSucceed.bind(to: navigateToDashboard).disposed(by: disposeBag)
+        viewModel.output.loginSucceed.bind(to: loginComplete).disposed(by: disposeBag)
         mainViewController = MainViewController()
         mainViewController.configure(with: viewModel)
-        navigationController.setViewControllers([mainViewController], animated: true)
+        navigationController.setViewControllers([mainViewController], animated: animatedTransition)
     }
 
 }

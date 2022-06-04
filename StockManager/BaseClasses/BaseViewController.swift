@@ -30,6 +30,19 @@ class BaseViewController: UIViewController {
         viewRendered = true
     }
 
+    func showSideMenuButton() {
+        let menuBtn = UIBarButtonItem(image: UIImage(named: "hamburger"),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(onSideMenuPressed))
+        navigationItem.leftBarButtonItem = menuBtn
+    }
+
+    @objc func onSideMenuPressed() {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: AppCoordinator.sideMenuNotificationKey),
+                                        object: nil)
+    }
+
     func localizeItems() {}
 
     func showAlert(title: String?, message: String?) {
