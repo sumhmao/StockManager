@@ -11,6 +11,7 @@
 		F1224351284B4126004FAA68 /* SideMenuShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1224350284B4126004FAA68 /* SideMenuShopTableViewCell.swift */; };
 		F1224353284B4139004FAA68 /* SideMenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1224352284B4139004FAA68 /* SideMenuItemTableViewCell.swift */; };
 		F1224355284B61E8004FAA68 /* MenuItemDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1224354284B61E8004FAA68 /* MenuItemDisplayModel.swift */; };
+		F1224357284FA4EC004FAA68 /* ForgotPasswordEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1224356284FA4EC004FAA68 /* ForgotPasswordEndpoint.swift */; };
 		F190F9512847B237008F4941 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9502847B237008F4941 /* LoginEndpoint.swift */; };
 		F190F9552847B77F008F4941 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9542847B77F008F4941 /* APIConstant.swift */; };
 		F190F9572847BB2B008F4941 /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9562847BB2B008F4941 /* UserContext.swift */; };
@@ -65,6 +66,7 @@
 		F1224350284B4126004FAA68 /* SideMenuShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuShopTableViewCell.swift; sourceTree = "<group>"; };
 		F1224352284B4139004FAA68 /* SideMenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItemTableViewCell.swift; sourceTree = "<group>"; };
 		F1224354284B61E8004FAA68 /* MenuItemDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDisplayModel.swift; sourceTree = "<group>"; };
+		F1224356284FA4EC004FAA68 /* ForgotPasswordEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordEndpoint.swift; sourceTree = "<group>"; };
 		F190F9502847B237008F4941 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
 		F190F9542847B77F008F4941 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		F190F9562847BB2B008F4941 /* UserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				F190F9502847B237008F4941 /* LoginEndpoint.swift */,
+				F1224356284FA4EC004FAA68 /* ForgotPasswordEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				F1A8130628009EAD001CB802 /* ReusableViewExtension.swift in Sources */,
 				F190F95A2847BBD4008F4941 /* Merchant.swift in Sources */,
 				F190F9702847CD4B008F4941 /* UIApplicationExtension.swift in Sources */,
+				F1224357284FA4EC004FAA68 /* ForgotPasswordEndpoint.swift in Sources */,
 				F190F9552847B77F008F4941 /* APIConstant.swift in Sources */,
 				F190F976284A1AF8008F4941 /* SideMenuCoordinator.swift in Sources */,
 				F1A8130A28009FEA001CB802 /* ViewModelType.swift in Sources */,

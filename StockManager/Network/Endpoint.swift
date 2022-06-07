@@ -49,37 +49,42 @@ extension Endpoint {
         }
 
         return Observable<Response>.create { observer -> Disposable in
-            let request = dataRequest.responseDecodable { (response: DataResponse<Response, AFError>) in
+            let request = dataRequest.responseData { response in
+
+                #if DEBUG
+                print("== Network response ==")
+                print(" base url: \(APIConstant.baseUrl)")
+                print(" path: \(self.url)")
+                if let data = response.data, let body = String(data: data, encoding: .utf8) {
+                    print(" body: \(body)")
+                }
+                #endif
+
                 switch response.result {
                 case .success(let data):
-                    #if DEBUG
-                    print("== Network response ==")
-                    print(" base url: \(APIConstant.baseUrl)")
-                    print(" path: \(self.url)")
-                    if let data = response.data, let body = String(data: data, encoding: .utf8) {
-                        print(" body: \(body)")
+                    let decoder = JSONDecoder()
+                    do {
+                        let resp = try decoder.decode(Response.self, from: data)
+                        observer.onNext(resp)
+                        observer.onCompleted()
+                    } catch {
+                        do {
+                            let resp = try decoder.decode(APIResponse.self, from: data)
+                            if let jsonData = resp.toAPIResJson() {
+                                let newResp = try decoder.decode(Response.self, from: jsonData)
+                                observer.onNext(newResp)
+                                observer.onCompleted()
+                            }
+                        } catch(let error) {
+                            let status = (error as NSError).code
+                            let message = error.localizedDescription
+                            let appError = APIError(code: "\(status)", message: message)
+                            observer.onError(appError)
+                        }
                     }
-                    #endif
-                    
-                    guard let status = Int(data.res.resCode ?? ""), (200...299).contains(status) else {
-                        let error = APIError(code: data.res.resCode ?? "", message: data.res.resDesc ?? "")
-                        observer.onError(error)
-                        return
-                    }
-
-                    observer.onNext(data)
-                    observer.onCompleted()
                 case .failure(let error):
-                    #if DEBUG
-                    print("== Network response ==")
-                    print(" base url: \(APIConstant.baseUrl)")
-                    print(" path: \(self.url)")
-                    if let data = response.data, let body = String(data: data, encoding: .utf8) {
-                        print(" body: \(body)")
-                    }
-                    #endif
-                    
                     observer.onError(error)
+                    return
                 }
             }
 
@@ -104,6 +109,19 @@ extension Encodable {
             return dictionary
         } catch {
             return [:]
+        }
+    }
+
+    fileprivate func toAPIResJson() -> Data? {
+        do {
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .useDefaultKeys
+            let data = try encoder.encode(self)
+            guard var json = String(data: data, encoding: .utf8) else { return nil }
+            json = "{ \"res\": \(json) }"
+            return json.data(using: .utf8)
+        } catch {
+            return nil
         }
     }
 }
