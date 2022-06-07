@@ -63,18 +63,33 @@ extension Endpoint {
                 switch response.result {
                 case .success(let data):
                     let decoder = JSONDecoder()
+                    
                     do {
                         let resp = try decoder.decode(Response.self, from: data)
+
+                        guard let status = Int(resp.res.resCode ?? ""), (200...299).contains(status) else {
+                            let error = APIError(code: resp.res.resCode ?? "", message: resp.res.resDesc ?? "")
+                            observer.onError(error)
+                            return
+                        }
+
                         observer.onNext(resp)
                         observer.onCompleted()
                     } catch {
                         do {
                             let resp = try decoder.decode(APIResponse.self, from: data)
-                            if let jsonData = resp.toAPIResJson() {
-                                let newResp = try decoder.decode(Response.self, from: jsonData)
-                                observer.onNext(newResp)
-                                observer.onCompleted()
+                            
+                            guard let status = Int(resp.resCode ?? ""), (200...299).contains(status),
+                                  let jsonData = resp.toAPIResJson() else {
+                                let error = APIError(code: resp.resCode ?? "", message: resp.resDesc ?? "")
+                                observer.onError(error)
+                                return
                             }
+
+                            let newResp = try decoder.decode(Response.self, from: jsonData)
+                            observer.onNext(newResp)
+                            observer.onCompleted()
+
                         } catch(let error) {
                             let status = (error as NSError).code
                             let message = error.localizedDescription
@@ -82,6 +97,7 @@ extension Endpoint {
                             observer.onError(appError)
                         }
                     }
+
                 case .failure(let error):
                     observer.onError(error)
                 }
