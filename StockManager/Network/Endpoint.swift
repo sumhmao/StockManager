@@ -84,7 +84,6 @@ extension Endpoint {
                     }
                 case .failure(let error):
                     observer.onError(error)
-                    return
                 }
             }
 
