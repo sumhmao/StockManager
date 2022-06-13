@@ -21,6 +21,9 @@
 		F122436C285793F8004FAA68 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122436B285793F8004FAA68 /* UIViewExtension.swift */; };
 		F122436F28579BB5004FAA68 /* DashboardMovementHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122436E28579BB5004FAA68 /* DashboardMovementHeaderView.swift */; };
 		F12243712857A3FA004FAA68 /* DashboardMovementHeaderDisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243702857A3FA004FAA68 /* DashboardMovementHeaderDisplayViewModel.swift */; };
+		F12243732857A54A004FAA68 /* DashboardStockGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243722857A54A004FAA68 /* DashboardStockGraphTableViewCell.swift */; };
+		F12243782857C24F004FAA68 /* ZortPieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243772857C24F004FAA68 /* ZortPieChartView.swift */; };
+		F122437B2857D02B004FAA68 /* ZortPieChartColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122437A2857D02B004FAA68 /* ZortPieChartColorSet.swift */; };
 		F190F9512847B237008F4941 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9502847B237008F4941 /* LoginEndpoint.swift */; };
 		F190F9552847B77F008F4941 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9542847B77F008F4941 /* APIConstant.swift */; };
 		F190F9572847BB2B008F4941 /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9562847BB2B008F4941 /* UserContext.swift */; };
@@ -85,6 +88,9 @@
 		F122436B285793F8004FAA68 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		F122436E28579BB5004FAA68 /* DashboardMovementHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMovementHeaderView.swift; sourceTree = "<group>"; };
 		F12243702857A3FA004FAA68 /* DashboardMovementHeaderDisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMovementHeaderDisplayViewModel.swift; sourceTree = "<group>"; };
+		F12243722857A54A004FAA68 /* DashboardStockGraphTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardStockGraphTableViewCell.swift; sourceTree = "<group>"; };
+		F12243772857C24F004FAA68 /* ZortPieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZortPieChartView.swift; sourceTree = "<group>"; };
+		F122437A2857D02B004FAA68 /* ZortPieChartColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZortPieChartColorSet.swift; sourceTree = "<group>"; };
 		F190F9502847B237008F4941 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
 		F190F9542847B77F008F4941 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		F190F9562847BB2B008F4941 /* UserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
@@ -177,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				F122436728566CC2004FAA68 /* DashboardMovementTableViewCell.swift */,
+				F12243722857A54A004FAA68 /* DashboardStockGraphTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -439,6 +446,8 @@
 			children = (
 				F1B613EA283AB44F003E4909 /* ZortTextField.swift */,
 				F1B613FF28452AA5003E4909 /* ZortButton.swift */,
+				F12243772857C24F004FAA68 /* ZortPieChartView.swift */,
+				F122437A2857D02B004FAA68 /* ZortPieChartColorSet.swift */,
 			);
 			path = CustomControls;
 			sourceTree = "<group>";
@@ -595,6 +604,7 @@
 				F1B613D3283AA936003E4909 /* Colors.swift in Sources */,
 				F1B613EB283AB44F003E4909 /* ZortTextField.swift in Sources */,
 				F1B613E8283AB34E003E4909 /* UIFontExtension.swift in Sources */,
+				F12243732857A54A004FAA68 /* DashboardStockGraphTableViewCell.swift in Sources */,
 				F190F9652847C262008F4941 /* DashboardViewController.swift in Sources */,
 				F1B613F5283AC0A2003E4909 /* Localization.swift in Sources */,
 				F1224351284B4126004FAA68 /* SideMenuShopTableViewCell.swift in Sources */,
@@ -607,6 +617,7 @@
 				F1224363285662D7004FAA68 /* GetDashboardStockCategoryEndpoint.swift in Sources */,
 				F1224365285666F9004FAA68 /* ReportStockGraphData.swift in Sources */,
 				F190F9552847B77F008F4941 /* APIConstant.swift in Sources */,
+				F122437B2857D02B004FAA68 /* ZortPieChartColorSet.swift in Sources */,
 				F12243712857A3FA004FAA68 /* DashboardMovementHeaderDisplayViewModel.swift in Sources */,
 				F190F976284A1AF8008F4941 /* SideMenuCoordinator.swift in Sources */,
 				F1A8130A28009FEA001CB802 /* ViewModelType.swift in Sources */,
@@ -627,6 +638,7 @@
 				F1A8130C2800A006001CB802 /* BaseViewController.swift in Sources */,
 				F1A8130228009BF2001CB802 /* BaseCoordinator.swift in Sources */,
 				F190F9572847BB2B008F4941 /* UserContext.swift in Sources */,
+				F12243782857C24F004FAA68 /* ZortPieChartView.swift in Sources */,
 				F190F95D2847BC93008F4941 /* BaseAPIResponse.swift in Sources */,
 				F1B613FE28452825003E4909 /* UIScrollViewExtension.swift in Sources */,
 				F1B613E6283AB307003E4909 /* AppFont.swift in Sources */,

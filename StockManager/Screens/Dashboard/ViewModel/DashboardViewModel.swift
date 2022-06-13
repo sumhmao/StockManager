@@ -22,6 +22,7 @@ protocol DashboardDataSource {
     func numberOfRowIn(section: DashboardDataSection) -> Int
     func movementDataAt(index: Int) -> ReportMovementData.MovementItem?
     func movementHeaderData() -> DashboardMovementHeaderDisplayViewModel?
+    func stockData() -> ReportStockGraphData?
 }
 
 final class DashboardViewModel: ViewModelType {
@@ -123,6 +124,10 @@ extension DashboardViewModel: DashboardDataSource {
     func movementHeaderData() -> DashboardMovementHeaderDisplayViewModel? {
         guard let movement = movementData else { return nil }
         return DashboardMovementHeaderDisplayViewModel(title: movement.title, filter: "Label")
+    }
+
+    func stockData() -> ReportStockGraphData? {
+        return stockGraphData
     }
 }
 

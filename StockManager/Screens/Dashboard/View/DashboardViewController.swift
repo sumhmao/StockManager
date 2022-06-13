@@ -25,6 +25,7 @@ final class DashboardViewController: BaseViewController {
         }
         tableView.register(DashboardMovementTableViewCell.self)
         tableView.register(DashboardMovementHeaderView.self)
+        tableView.register(DashboardStockGraphTableViewCell.self)
         return tableView
     }()
 
@@ -54,6 +55,7 @@ final class DashboardViewController: BaseViewController {
 
     override func localizeItems() {
         self.title = Localization.Dashboard.pageTitle
+        tableView.reloadData()
     }
 
     func configure(with viewModel: DashboardViewModel) {
@@ -105,7 +107,12 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
 
         case .stockGraph:
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardStockGraphTableViewCell
+            if let data = viewModel.datasource.stockData() {
+                cell.configure(data: data)
+            }
+            return cell
+            
         case .topSales:
             return UITableViewCell()
         case .topCategory:
