@@ -22,3 +22,9 @@ SIDE_MENU-PRODUCTS = "สินค้า";
 SIDE_MENU-WAREHOUSE = "คลังสินค้า/สาขา";
 SIDE_MENU-SETTINGS = "ตั้งค่า";
 SIDE_MENU-LOGOUT = "ออกจากระบบ";
+
+// Dashboard
+DASHBOARD-PAGE_TITLE = "รายงาน";
+DASHBOARD-PRODUCT_HEADER_TITLE = "สินค้า";
+DASHBOARD-MOVEMENT_HEADER_TITLE = "การเคลื่อนไหว";
+DASHBOARD-AVAILABLE_HEADER_TITLE = "คงเหลือ";

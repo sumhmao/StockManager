@@ -58,7 +58,7 @@ final class MainViewModel: ViewModelType {
         let param = LoginEndpoint.Request(username: username, password: password)
         LoginEndpoint.service.request(parameters: param).subscribe(onNext: { [weak self] (response) in
             self?.showLoading.onNext(false)
-            let merchant = Merchant(withResponse: response)
+            let merchant = Merchant(withResponse: response, password: password)
             UserContext.shared.saveMerchant(merchant)
             self?.loginSucceed.onNext(())
         }, onError: { [weak self] (error) in
@@ -71,11 +71,12 @@ final class MainViewModel: ViewModelType {
 
 fileprivate extension Merchant {
 
-    init(withResponse response: LoginEndpoint.Response) {
+    init(withResponse response: LoginEndpoint.Response, password: String) {
         self.userId = response.userid
         self.merchantId = response.merchantid
         self.name = response.merchantname ?? ""
         self.displayName = response.displayname ?? ""
+        self.password = password
     }
 
 }

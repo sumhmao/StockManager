@@ -35,6 +35,7 @@ class BaseViewController: UIViewController {
                                       style: .plain,
                                       target: self,
                                       action: #selector(onSideMenuPressed))
+        menuBtn.tintColor = .white
         navigationItem.leftBarButtonItem = menuBtn
     }
 

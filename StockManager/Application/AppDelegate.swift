@@ -21,11 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if #available(iOS 15.0, *) {
             let navigationBarAppearance = UINavigationBarAppearance()
-            navigationBarAppearance.configureWithDefaultBackground()
+            navigationBarAppearance.backgroundImage = UIImage(color: .zortBranding)
+            navigationBarAppearance.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.font: UIFont.boldSukhumvitTadmai(ofSize: 20)
+            ]
             UINavigationBar.appearance().standardAppearance = navigationBarAppearance
             UINavigationBar.appearance().compactAppearance = navigationBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        } 
+        }
         
         let navigation = UINavigationController()
         appCoordinator = AppCoordinator(navigationController: navigation)

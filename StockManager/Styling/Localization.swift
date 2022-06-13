@@ -51,4 +51,19 @@ enum Localization {
         }
     }
 
+    enum Dashboard {
+        static var pageTitle: String {
+            return "DASHBOARD-PAGE_TITLE".localized()
+        }
+        static var productHeaderTitle: String {
+            return "DASHBOARD-PRODUCT_HEADER_TITLE".localized()
+        }
+        static var movementHeaderTitle: String {
+            return "DASHBOARD-MOVEMENT_HEADER_TITLE".localized()
+        }
+        static var availableHeaderTitle: String {
+            return "DASHBOARD-AVAILABLE_HEADER_TITLE".localized()
+        }
+    }
+
 }

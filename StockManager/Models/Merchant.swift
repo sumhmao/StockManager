@@ -12,4 +12,5 @@ struct Merchant: Codable {
     let merchantId: Int
     let name: String
     let displayName: String
+    let password: String
 }

@@ -12,6 +12,15 @@
 		F1224353284B4139004FAA68 /* SideMenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1224352284B4139004FAA68 /* SideMenuItemTableViewCell.swift */; };
 		F1224355284B61E8004FAA68 /* MenuItemDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1224354284B61E8004FAA68 /* MenuItemDisplayModel.swift */; };
 		F1224357284FA4EC004FAA68 /* ForgotPasswordEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1224356284FA4EC004FAA68 /* ForgotPasswordEndpoint.swift */; };
+		F122435D28565D4E004FAA68 /* ReportMovementData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122435C28565D4E004FAA68 /* ReportMovementData.swift */; };
+		F122435F28565F3E004FAA68 /* GetMovementListEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122435E28565F3E004FAA68 /* GetMovementListEndpoint.swift */; };
+		F1224361285662C7004FAA68 /* GetDashboardStockGraphEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1224360285662C7004FAA68 /* GetDashboardStockGraphEndpoint.swift */; };
+		F1224363285662D7004FAA68 /* GetDashboardStockCategoryEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1224362285662D7004FAA68 /* GetDashboardStockCategoryEndpoint.swift */; };
+		F1224365285666F9004FAA68 /* ReportStockGraphData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1224364285666F9004FAA68 /* ReportStockGraphData.swift */; };
+		F122436828566CC2004FAA68 /* DashboardMovementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122436728566CC2004FAA68 /* DashboardMovementTableViewCell.swift */; };
+		F122436C285793F8004FAA68 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122436B285793F8004FAA68 /* UIViewExtension.swift */; };
+		F122436F28579BB5004FAA68 /* DashboardMovementHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122436E28579BB5004FAA68 /* DashboardMovementHeaderView.swift */; };
+		F12243712857A3FA004FAA68 /* DashboardMovementHeaderDisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243702857A3FA004FAA68 /* DashboardMovementHeaderDisplayViewModel.swift */; };
 		F190F9512847B237008F4941 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9502847B237008F4941 /* LoginEndpoint.swift */; };
 		F190F9552847B77F008F4941 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9542847B77F008F4941 /* APIConstant.swift */; };
 		F190F9572847BB2B008F4941 /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9562847BB2B008F4941 /* UserContext.swift */; };
@@ -67,6 +76,15 @@
 		F1224352284B4139004FAA68 /* SideMenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItemTableViewCell.swift; sourceTree = "<group>"; };
 		F1224354284B61E8004FAA68 /* MenuItemDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDisplayModel.swift; sourceTree = "<group>"; };
 		F1224356284FA4EC004FAA68 /* ForgotPasswordEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordEndpoint.swift; sourceTree = "<group>"; };
+		F122435C28565D4E004FAA68 /* ReportMovementData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMovementData.swift; sourceTree = "<group>"; };
+		F122435E28565F3E004FAA68 /* GetMovementListEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovementListEndpoint.swift; sourceTree = "<group>"; };
+		F1224360285662C7004FAA68 /* GetDashboardStockGraphEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDashboardStockGraphEndpoint.swift; sourceTree = "<group>"; };
+		F1224362285662D7004FAA68 /* GetDashboardStockCategoryEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDashboardStockCategoryEndpoint.swift; sourceTree = "<group>"; };
+		F1224364285666F9004FAA68 /* ReportStockGraphData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStockGraphData.swift; sourceTree = "<group>"; };
+		F122436728566CC2004FAA68 /* DashboardMovementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMovementTableViewCell.swift; sourceTree = "<group>"; };
+		F122436B285793F8004FAA68 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		F122436E28579BB5004FAA68 /* DashboardMovementHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMovementHeaderView.swift; sourceTree = "<group>"; };
+		F12243702857A3FA004FAA68 /* DashboardMovementHeaderDisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMovementHeaderDisplayViewModel.swift; sourceTree = "<group>"; };
 		F190F9502847B237008F4941 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
 		F190F9542847B77F008F4941 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		F190F9562847BB2B008F4941 /* UserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
@@ -155,10 +173,28 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		F122436628566C91004FAA68 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				F122436728566CC2004FAA68 /* DashboardMovementTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		F122436D28579B98004FAA68 /* TableHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				F122436E28579BB5004FAA68 /* DashboardMovementHeaderView.swift */,
+			);
+			path = TableHeaderView;
+			sourceTree = "<group>";
+		};
 		F190F9582847BBB5008F4941 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F190F9592847BBD4008F4941 /* Merchant.swift */,
+				F122435C28565D4E004FAA68 /* ReportMovementData.swift */,
+				F1224364285666F9004FAA68 /* ReportStockGraphData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,6 +204,9 @@
 			children = (
 				F190F9502847B237008F4941 /* LoginEndpoint.swift */,
 				F1224356284FA4EC004FAA68 /* ForgotPasswordEndpoint.swift */,
+				F122435E28565F3E004FAA68 /* GetMovementListEndpoint.swift */,
+				F1224360285662C7004FAA68 /* GetDashboardStockGraphEndpoint.swift */,
+				F1224362285662D7004FAA68 /* GetDashboardStockCategoryEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -193,6 +232,8 @@
 		F190F9602847C234008F4941 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F122436D28579B98004FAA68 /* TableHeaderView */,
+				F122436628566C91004FAA68 /* TableViewCell */,
 				F190F9642847C262008F4941 /* DashboardViewController.swift */,
 			);
 			path = View;
@@ -202,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				F190F9662847C276008F4941 /* DashboardViewModel.swift */,
+				F12243702857A3FA004FAA68 /* DashboardMovementHeaderDisplayViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -321,6 +363,7 @@
 				F1B613FD28452825003E4909 /* UIScrollViewExtension.swift */,
 				F1B6140128452B49003E4909 /* UIImageExtension.swift */,
 				F190F96F2847CD4B008F4941 /* UIApplicationExtension.swift */,
+				F122436B285793F8004FAA68 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -547,6 +590,8 @@
 				F1B613F2283ABF95003E4909 /* NotificationCenterExtension.swift in Sources */,
 				F1224353284B4139004FAA68 /* SideMenuItemTableViewCell.swift in Sources */,
 				F1B6140228452B49003E4909 /* UIImageExtension.swift in Sources */,
+				F122436828566CC2004FAA68 /* DashboardMovementTableViewCell.swift in Sources */,
+				F122436C285793F8004FAA68 /* UIViewExtension.swift in Sources */,
 				F1B613D3283AA936003E4909 /* Colors.swift in Sources */,
 				F1B613EB283AB44F003E4909 /* ZortTextField.swift in Sources */,
 				F1B613E8283AB34E003E4909 /* UIFontExtension.swift in Sources */,
@@ -554,15 +599,21 @@
 				F1B613F5283AC0A2003E4909 /* Localization.swift in Sources */,
 				F1224351284B4126004FAA68 /* SideMenuShopTableViewCell.swift in Sources */,
 				F1A8130628009EAD001CB802 /* ReusableViewExtension.swift in Sources */,
+				F122435D28565D4E004FAA68 /* ReportMovementData.swift in Sources */,
+				F122436F28579BB5004FAA68 /* DashboardMovementHeaderView.swift in Sources */,
 				F190F95A2847BBD4008F4941 /* Merchant.swift in Sources */,
 				F190F9702847CD4B008F4941 /* UIApplicationExtension.swift in Sources */,
 				F1224357284FA4EC004FAA68 /* ForgotPasswordEndpoint.swift in Sources */,
+				F1224363285662D7004FAA68 /* GetDashboardStockCategoryEndpoint.swift in Sources */,
+				F1224365285666F9004FAA68 /* ReportStockGraphData.swift in Sources */,
 				F190F9552847B77F008F4941 /* APIConstant.swift in Sources */,
+				F12243712857A3FA004FAA68 /* DashboardMovementHeaderDisplayViewModel.swift in Sources */,
 				F190F976284A1AF8008F4941 /* SideMenuCoordinator.swift in Sources */,
 				F1A8130A28009FEA001CB802 /* ViewModelType.swift in Sources */,
 				F190F96E2847CC71008F4941 /* LoadingController.swift in Sources */,
 				F190F978284A1B06008F4941 /* SideMenuViewController.swift in Sources */,
 				F190F9692847C655008F4941 /* APIError.swift in Sources */,
+				F122435F28565F3E004FAA68 /* GetMovementListEndpoint.swift in Sources */,
 				F190F9672847C276008F4941 /* DashboardViewModel.swift in Sources */,
 				F1B6140528469102003E4909 /* Endpoint.swift in Sources */,
 				F1A8130828009ED1001CB802 /* StringExtension.swift in Sources */,
@@ -570,6 +621,7 @@
 				F1224355284B61E8004FAA68 /* MenuItemDisplayModel.swift in Sources */,
 				F1A812EA28009AD3001CB802 /* AppDelegate.swift in Sources */,
 				F1A813172800A096001CB802 /* MainViewModel.swift in Sources */,
+				F1224361285662C7004FAA68 /* GetDashboardStockGraphEndpoint.swift in Sources */,
 				F190F9512847B237008F4941 /* LoginEndpoint.swift in Sources */,
 				F1B6140028452AA5003E4909 /* ZortButton.swift in Sources */,
 				F1A8130C2800A006001CB802 /* BaseViewController.swift in Sources */,

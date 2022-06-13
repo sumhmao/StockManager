@@ -1,6 +1,10 @@
 PODS:
   - Alamofire (5.6.1)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - IQKeyboardManagerSwift (6.5.10)
+  - Kingfisher (6.3.1)
   - Locksmith (4.0.0)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
@@ -13,7 +17,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Charts
   - IQKeyboardManagerSwift
+  - Kingfisher
   - Locksmith
   - RxCocoa
   - RxSwift
@@ -23,7 +29,9 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Charts
     - IQKeyboardManagerSwift
+    - Kingfisher
     - Locksmith
     - RxCocoa
     - RxRelay
@@ -33,7 +41,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
@@ -41,6 +51,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
 
-PODFILE CHECKSUM: 1692e4f3f624141915204ade3a05834065172b37
+PODFILE CHECKSUM: ec2198194aaa506819ad096b059432d101e58780
 
 COCOAPODS: 1.11.2

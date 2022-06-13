@@ -52,7 +52,7 @@ final class AppCoordinator: BaseCoordinator {
             self?.currentMenu = item
             switch item {
             case .report:
-                self?.navigateToReport()
+                self?.navigateToDashboard()
             case .sellList:
                 self?.navigateToSellList()
             case .buyList:
