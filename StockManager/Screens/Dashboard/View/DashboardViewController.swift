@@ -26,6 +26,7 @@ final class DashboardViewController: BaseViewController {
         tableView.register(DashboardMovementTableViewCell.self)
         tableView.register(DashboardMovementHeaderView.self)
         tableView.register(DashboardStockGraphTableViewCell.self)
+        tableView.register(DashboardSalesGraphTableViewCell.self)
         return tableView
     }()
 
@@ -117,8 +118,13 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         case .topCategory:
             return UITableViewCell()
+
         case .salesGraph:
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardSalesGraphTableViewCell
+            if let data = viewModel.datasource.salesData() {
+                cell.configure(data: data)
+            }
+            return cell
         }
     }
 

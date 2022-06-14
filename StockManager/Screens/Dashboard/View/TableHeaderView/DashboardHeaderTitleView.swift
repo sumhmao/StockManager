@@ -27,6 +27,11 @@ final class DashboardHeaderTitleView: UIView {
         return label
     }()
 
+    private lazy var dropdownView: ZortDropdownView = {
+        let view = ZortDropdownView()
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         initUIComponents()
@@ -42,6 +47,7 @@ final class DashboardHeaderTitleView: UIView {
         addSubview(stackView)
         heightAnchor.constraint(equalToConstant: 40).isActive = true
         stackView.addArrangedSubview(headerTitle)
+        stackView.addArrangedSubview(dropdownView)
 
         stackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(9)
@@ -53,6 +59,7 @@ final class DashboardHeaderTitleView: UIView {
 
     func configure(title: String, filter: String) {
         headerTitle.text = title
+        dropdownView.configure(title: filter)
     }
 
 }

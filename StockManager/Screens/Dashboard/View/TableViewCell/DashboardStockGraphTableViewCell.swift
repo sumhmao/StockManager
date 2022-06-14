@@ -9,8 +9,6 @@ import UIKit
 
 final class DashboardStockGraphTableViewCell: UITableViewCell {
 
-    private let chartFont = UIFont.sukhumvitTadmai(ofSize: 10)
-
     private lazy var headerView: DashboardHeaderTitleView = {
         let view = DashboardHeaderTitleView()
         return view

@@ -23,6 +23,7 @@ protocol DashboardDataSource {
     func movementDataAt(index: Int) -> ReportMovementData.MovementItem?
     func movementHeaderData() -> DashboardMovementHeaderDisplayViewModel?
     func stockData() -> DashboardReportStockGraphDisplayViewModel?
+    func salesData() -> DashboardReportSalesGraphDisplayViewModel?
 }
 
 final class DashboardViewModel: ViewModelType {
@@ -47,6 +48,7 @@ final class DashboardViewModel: ViewModelType {
     private let onAPIError = PublishSubject<Error>()
     private var movementData: ReportMovementData?
     private var stockGraphData: ReportStockGraphData?
+    private var salesGraphData: ReportSalesGraphData?
 
     init() {
         self.input = Input(
@@ -75,11 +77,15 @@ final class DashboardViewModel: ViewModelType {
         let stockGraphParam = GetDashboardStockGraphEndpoint.Request()
         let stockGraphRequest = GetDashboardStockGraphEndpoint.service.request(parameters: stockGraphParam)
 
-        Observable.combineLatest(fetchMovementRequest, stockGraphRequest)
-            .subscribe(onNext: { [weak self] (movement, stockGraph) in
+        let salesGraphParam = GetDashboardSalesGraphEndpoint.Request()
+        let salesGraphRequest = GetDashboardSalesGraphEndpoint.service.request(parameters: salesGraphParam)
+
+        Observable.combineLatest(fetchMovementRequest, stockGraphRequest, salesGraphRequest)
+            .subscribe(onNext: { [weak self] (movement, stockGraph, salesGraph) in
                 guard let self = self else { return }
                 self.movementData = ReportMovementData(response: movement)
                 self.stockGraphData = ReportStockGraphData(response: stockGraph)
+                self.salesGraphData = ReportSalesGraphData(response: salesGraph)
                 self.showLoading.onNext(false)
                 self.updateData.onNext(())
 
@@ -112,7 +118,7 @@ extension DashboardViewModel: DashboardDataSource {
         case .topCategory:
             return 0
         case .salesGraph:
-            return 0
+            return salesGraphData == nil ? 0 : 1
         }
     }
 
@@ -129,6 +135,11 @@ extension DashboardViewModel: DashboardDataSource {
     func stockData() -> DashboardReportStockGraphDisplayViewModel? {
         guard let stockData = stockGraphData else { return nil }
         return DashboardReportStockGraphDisplayViewModel(stockData: stockData, filter: "Label")
+    }
+
+    func salesData() -> DashboardReportSalesGraphDisplayViewModel? {
+        guard let salesData = salesGraphData else { return nil }
+        return DashboardReportSalesGraphDisplayViewModel(salesData: salesData, filter: "Label")
     }
 }
 
@@ -175,6 +186,24 @@ fileprivate extension ReportStockGraphData {
                 id: item.id,
                 name: item.name ?? "",
                 value: item.value
+            )
+        }
+    }
+
+}
+
+fileprivate extension ReportSalesGraphData {
+
+    init(response: GetDashboardSalesGraphEndpoint.Response) {
+        self.title = response.name ?? ""
+        self.list = response.list.map { item in
+            let valueList = item.valuelist.map { value in
+                return ReportSalesGraphData.SalesGraphItem.ValueItem(
+                    detailId: value.detailid, name: value.name, value: value.value
+                )
+            }
+            return ReportSalesGraphData.SalesGraphItem(
+                name: item.name, value1: item.value1, value2: item.value2, valueList: valueList
             )
         }
     }
