@@ -17,22 +17,9 @@ final class DashboardMovementHeaderView: UITableViewHeaderFooterView {
         return view
     }()
 
-    private lazy var topStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.spacing = 7
-        return stackView
-    }()
-
-    private lazy var movementTitle: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .clear
-        label.font = .sukhumvitTadmai(ofSize: 14)
-        label.textColor = .black
-        label.textAlignment = .left
-        return label
+    private lazy var headerView: DashboardHeaderTitleView = {
+        let view = DashboardHeaderTitleView()
+        return view
     }()
 
     private lazy var bottomPanel: UIView = {
@@ -99,35 +86,26 @@ final class DashboardMovementHeaderView: UITableViewHeaderFooterView {
 
         contentView.addSubview(topPanel)
         contentView.addSubview(bottomPanel)
-        topPanel.addSubview(topStackView)
+        topPanel.addSubview(headerView)
         bottomPanel.addSubview(bottomStackView)
 
         topPanel.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(40)
         }
         bottomPanel.snp.makeConstraints { make in
             make.top.equalTo(topPanel.snp.bottom)
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(27)
         }
-        topStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(9)
-            make.left.equalToSuperview().offset(11)
-            make.bottom.equalToSuperview().offset(-7)
-            make.right.equalToSuperview().offset(-12)
+        headerView.snp.makeConstraints { make in
+            make.top.left.bottom.right.equalToSuperview()
         }
         bottomStackView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.left.equalToSuperview().offset(13.44)
             make.right.equalToSuperview().offset(-14)
         }
-        initTopSectionViews()
         initBottomSectionViews()
-    }
-
-    private func initTopSectionViews() {
-        topStackView.addArrangedSubview(movementTitle)
     }
 
     private func initBottomSectionViews() {
@@ -137,7 +115,7 @@ final class DashboardMovementHeaderView: UITableViewHeaderFooterView {
     }
 
     func configure(data: DashboardMovementHeaderDisplayViewModel) {
-        movementTitle.text = data.title
+        headerView.configure(title: data.title, filter: data.filter)
     }
 
 }
