@@ -11,9 +11,8 @@ import RxSwift
 enum DashboardDataSection: Int, CaseIterable {
     case movementList = 0
     case stockGraph = 1
-    case topSales = 2
-    case topCategory = 3
-    case salesGraph = 4
+    case summary = 2
+    case salesGraph = 3
 }
 
 protocol DashboardDataSource {
@@ -23,6 +22,7 @@ protocol DashboardDataSource {
     func movementDataAt(index: Int) -> ReportMovementData.MovementItem?
     func movementHeaderData() -> DashboardMovementHeaderDisplayViewModel?
     func stockData() -> DashboardReportStockGraphDisplayViewModel?
+    func summaryDataAt(index: Int) -> DashboardSummaryItemDisplayViewModel?
     func salesData() -> DashboardReportSalesGraphDisplayViewModel?
 }
 
@@ -49,6 +49,7 @@ final class DashboardViewModel: ViewModelType {
     private var movementData: ReportMovementData?
     private var stockGraphData: ReportStockGraphData?
     private var salesGraphData: ReportSalesGraphData?
+    private var summaryItems = [DashboardSummaryItemDisplayViewModel]()
 
     init() {
         self.input = Input(
@@ -69,6 +70,8 @@ final class DashboardViewModel: ViewModelType {
         showLoading.onNext(true)
         movementData = nil
         stockGraphData = nil
+        summaryItems.removeAll()
+        salesGraphData = nil
         updateData.onNext(())
 
         let fetchMovementParam = GetMovementListEndpoint.Request()
@@ -77,14 +80,18 @@ final class DashboardViewModel: ViewModelType {
         let stockGraphParam = GetDashboardStockGraphEndpoint.Request()
         let stockGraphRequest = GetDashboardStockGraphEndpoint.service.request(parameters: stockGraphParam)
 
+        let dashboardSummaryParam = GetDashboardSummaryEndpoint.Request()
+        let dashboardSummaryRequest = GetDashboardSummaryEndpoint.service.request(parameters: dashboardSummaryParam)
+
         let salesGraphParam = GetDashboardSalesGraphEndpoint.Request()
         let salesGraphRequest = GetDashboardSalesGraphEndpoint.service.request(parameters: salesGraphParam)
 
-        Observable.combineLatest(fetchMovementRequest, stockGraphRequest, salesGraphRequest)
-            .subscribe(onNext: { [weak self] (movement, stockGraph, salesGraph) in
+        Observable.combineLatest(fetchMovementRequest, stockGraphRequest, dashboardSummaryRequest, salesGraphRequest)
+            .subscribe(onNext: { [weak self] (movement, stockGraph, summary, salesGraph) in
                 guard let self = self else { return }
                 self.movementData = ReportMovementData(response: movement)
                 self.stockGraphData = ReportStockGraphData(response: stockGraph)
+                self.initSummaryData(response: summary)
                 self.salesGraphData = ReportSalesGraphData(response: salesGraph)
                 self.showLoading.onNext(false)
                 self.updateData.onNext(())
@@ -93,6 +100,25 @@ final class DashboardViewModel: ViewModelType {
                 self?.showLoading.onNext(false)
                 self?.onAPIError.onNext(error)
             }).disposed(by: disposeBag)
+    }
+
+    private func initSummaryData(response: GetDashboardSummaryEndpoint.Response) {
+        if let id = response.name1id, let name = response.name1, let value = response.name1value {
+            let summaryItem = DashboardSummaryItemDisplayViewModel(id: id, name: name, value: value)
+            summaryItems.append(summaryItem)
+        }
+        if let id = response.name2id, let name = response.name2, let value = response.name2value {
+            let summaryItem = DashboardSummaryItemDisplayViewModel(id: id, name: name, value: value)
+            summaryItems.append(summaryItem)
+        }
+        if let id = response.name3id, let name = response.name3, let value = response.name3value {
+            let summaryItem = DashboardSummaryItemDisplayViewModel(id: id, name: name, value: value)
+            summaryItems.append(summaryItem)
+        }
+        if let id = response.name4id, let name = response.name4, let value = response.name4value {
+            let summaryItem = DashboardSummaryItemDisplayViewModel(id: id, name: name, value: value)
+            summaryItems.append(summaryItem)
+        }
     }
 
 }
@@ -113,10 +139,8 @@ extension DashboardViewModel: DashboardDataSource {
             return movementData?.list.count ?? 0
         case .stockGraph:
             return stockGraphData == nil ? 0 : 1
-        case .topSales:
-            return 0
-        case .topCategory:
-            return 0
+        case .summary:
+            return summaryItems.count
         case .salesGraph:
             return salesGraphData == nil ? 0 : 1
         }
@@ -135,6 +159,11 @@ extension DashboardViewModel: DashboardDataSource {
     func stockData() -> DashboardReportStockGraphDisplayViewModel? {
         guard let stockData = stockGraphData else { return nil }
         return DashboardReportStockGraphDisplayViewModel(stockData: stockData, filter: "Label")
+    }
+
+    func summaryDataAt(index: Int) -> DashboardSummaryItemDisplayViewModel? {
+        guard index >= 0, index < summaryItems.count else { return nil }
+        return summaryItems[index]
     }
 
     func salesData() -> DashboardReportSalesGraphDisplayViewModel? {

@@ -26,6 +26,7 @@ final class DashboardViewController: BaseViewController {
         tableView.register(DashboardMovementTableViewCell.self)
         tableView.register(DashboardMovementHeaderView.self)
         tableView.register(DashboardStockGraphTableViewCell.self)
+        tableView.register(DashboardSummaryItemViewCell.self)
         tableView.register(DashboardSalesGraphTableViewCell.self)
         return tableView
     }()
@@ -114,10 +115,12 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return cell
             
-        case .topSales:
-            return UITableViewCell()
-        case .topCategory:
-            return UITableViewCell()
+        case .summary:
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardSummaryItemViewCell
+            if let data = viewModel.datasource.summaryDataAt(index: indexPath.row) {
+                cell.configure(withTitle: data.name, value: data.value)
+            }
+            return cell
 
         case .salesGraph:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardSalesGraphTableViewCell
@@ -159,8 +162,23 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
+        guard let section = viewModel.datasource.sectionAt(index: section) else {
+            return CGFloat.leastNormalMagnitude
+        }
+
+        switch section {
+        case .summary:
+            return 5
+        case .salesGraph:
+            return CGFloat.leastNormalMagnitude
+        default:
+            return 15
+        }
     }
 
 }
