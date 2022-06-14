@@ -1,8 +1,6 @@
 PODS:
+  - AAInfographics (7.2.0)
   - Alamofire (5.6.1)
-  - Charts (3.6.0):
-    - Charts/Core (= 3.6.0)
-  - Charts/Core (3.6.0)
   - IQKeyboardManagerSwift (6.5.10)
   - Kingfisher (6.3.1)
   - Locksmith (4.0.0)
@@ -16,8 +14,8 @@ PODS:
   - Wormholy (1.6.5)
 
 DEPENDENCIES:
+  - AAInfographics (from `https://github.com/AAChartModel/AAChartKit-Swift.git`)
   - Alamofire
-  - Charts
   - IQKeyboardManagerSwift
   - Kingfisher
   - Locksmith
@@ -29,7 +27,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - Charts
     - IQKeyboardManagerSwift
     - Kingfisher
     - Locksmith
@@ -39,9 +36,18 @@ SPEC REPOS:
     - SnapKit
     - Wormholy
 
+EXTERNAL SOURCES:
+  AAInfographics:
+    :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+
+CHECKOUT OPTIONS:
+  AAInfographics:
+    :commit: d4bf15f2457f86a6337572e546f441e1c251c73b
+    :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+
 SPEC CHECKSUMS:
+  AAInfographics: 10defc08a598c06f8dd7c9ecf0a50e70e88fdb4d
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
-  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
@@ -51,6 +57,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
 
-PODFILE CHECKSUM: ec2198194aaa506819ad096b059432d101e58780
+PODFILE CHECKSUM: 7fbb31b595bb8853854ea9546232fab31308aca1
 
 COCOAPODS: 1.11.2

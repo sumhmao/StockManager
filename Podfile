@@ -11,7 +11,7 @@ target 'StockManager' do
   pod 'Locksmith'
   pod 'Alamofire'
   pod 'IQKeyboardManagerSwift'
-  pod 'Charts'
+  pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
   pod 'Kingfisher'
   pod 'Wormholy', :configurations => ['Debug']
 
