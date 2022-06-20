@@ -12,12 +12,13 @@ final class DashboardCoordinator: BaseCoordinator {
 
     private var dashboardViewController: DashboardViewController!
     private let disposeBag = DisposeBag()
+    var animated = true
 
     override func start() {
         let viewModel = DashboardViewModel()
         dashboardViewController = DashboardViewController()
         dashboardViewController.configure(with: viewModel)
-        navigationController.setViewControllers([dashboardViewController], animated: true)
+        navigationController.setViewControllers([dashboardViewController], animated: animated)
     }
 
 }

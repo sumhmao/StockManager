@@ -66,4 +66,13 @@ enum Localization {
         }
     }
 
+    enum Products {
+        static var pageTitle: String {
+            return "PRODUCTS-PAGE_TITLE".localized()
+        }
+        static var searchHint: String {
+            return "PRODUCTS-SEARCH_HINT".localized()
+        }
+    }
+
 }

@@ -16,6 +16,7 @@ final class AppCoordinator: BaseCoordinator {
     private var mainCoordinator: MainCoordinator?
     private var sideMenuCoordinator: SideMenuCoordinator?
     private var dashboardCoordinator: DashboardCoordinator?
+    private var productsCoordinator: ProductsCoordinator?
 
     private var currentMenu: SideMenuItem?
 
@@ -52,7 +53,7 @@ final class AppCoordinator: BaseCoordinator {
             self?.currentMenu = item
             switch item {
             case .report:
-                self?.navigateToDashboard()
+                self?.navigateToDashboard(animated: false)
             case .sellList:
                 self?.navigateToSellList()
             case .buyList:
@@ -68,13 +69,10 @@ final class AppCoordinator: BaseCoordinator {
         sideMenuCoordinator?.start()
     }
 
-    private func navigateToDashboard() {
+    private func navigateToDashboard(animated: Bool = true) {
         dashboardCoordinator = DashboardCoordinator(navigationController: navigationController)
+        dashboardCoordinator?.animated = animated
         dashboardCoordinator?.start()
-    }
-
-    private func navigateToReport() {
-
     }
 
     private func navigateToSellList() {
@@ -86,7 +84,8 @@ final class AppCoordinator: BaseCoordinator {
     }
 
     private func navigateToProducts() {
-
+        productsCoordinator = ProductsCoordinator(navigationController: navigationController)
+        productsCoordinator?.start()
     }
 
     private func navigateToBranchAndWarehouse() {

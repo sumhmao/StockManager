@@ -109,8 +109,8 @@ public final class ZortTextField: UITextField {
         }
     }
 
-    public var leftPadding: CGFloat = 15
-    public var rightPadding: CGFloat = 15
+    public var leftPadding: CGFloat = 10
+    public var rightPadding: CGFloat = 10
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -168,8 +168,8 @@ public final class ZortTextField: UITextField {
 
     public override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
         var leftViewRect = super.leftViewRect(forBounds: bounds)
-        leftViewRect.origin.x += leftPadding
-        leftViewRect.size.width = 24
+        leftViewRect.origin.x += 19
+        leftViewRect.size.width = 20
         return leftViewRect
     }
 
@@ -246,7 +246,7 @@ public final class ZortTextField: UITextField {
 
         if let image = leftImage {
             leftViewMode = UITextField.ViewMode.always
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
             imageView.contentMode = .scaleAspectFit
             imageView.image = image
             leftView = imageView

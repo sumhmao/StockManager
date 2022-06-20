@@ -28,3 +28,7 @@ DASHBOARD-PAGE_TITLE = "รายงาน";
 DASHBOARD-PRODUCT_HEADER_TITLE = "สินค้า";
 DASHBOARD-MOVEMENT_HEADER_TITLE = "การเคลื่อนไหว";
 DASHBOARD-AVAILABLE_HEADER_TITLE = "คงเหลือ";
+
+// Products
+PRODUCTS-PAGE_TITLE = "สินค้า";
+PRODUCTS-SEARCH_HINT = "ค้นหาด้วย ชื่อ รหัสสินค้า";

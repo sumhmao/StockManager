@@ -138,6 +138,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
 
         switch section {
         case .movementList:
+            guard viewModel.datasource.numberOfRowIn(section: section) > 0 else { return nil }
             let header = tableView.dequeueReusableHeaderFooter() as DashboardMovementHeaderView
             header.layer.zPosition = 0
             if let data = viewModel.datasource.movementHeaderData() {
@@ -156,6 +157,9 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
 
         switch section {
         case .movementList:
+            guard viewModel.datasource.numberOfRowIn(section: section) > 0 else {
+                return CGFloat.leastNormalMagnitude
+            }
             return UITableView.automaticDimension
 
         default: return CGFloat.leastNormalMagnitude
