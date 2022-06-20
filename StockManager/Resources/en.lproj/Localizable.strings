@@ -32,3 +32,8 @@ DASHBOARD-AVAILABLE_HEADER_TITLE = "Available";
 // Products
 PRODUCTS-PAGE_TITLE = "Products";
 PRODUCTS-SEARCH_HINT = "Search by name or product id";
+PRODUCTS-PRODUCT_HEADER_TITLE = "Product";
+PRODUCTS-STOCK_HEADER_TITLE = "Stock";
+PRODUCTS-AVAILABLE_HEADER_TITLE = "Available";
+PRODUCTS-EMPTY_TITLE = "Add new product here";
+PRODUCTS-EMPTY_DESCRIPTION = "Save product information and stock data";

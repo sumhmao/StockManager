@@ -39,6 +39,11 @@
 		F122439928608CF2004FAA68 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122439828608CF2004FAA68 /* ProductsViewController.swift */; };
 		F122439B28608CFE004FAA68 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122439A28608CFE004FAA68 /* ProductsViewModel.swift */; };
 		F122439E28609C94004FAA68 /* ProductEmptyStateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122439D28609C94004FAA68 /* ProductEmptyStateTableViewCell.swift */; };
+		F12243A028610447004FAA68 /* GetProductListEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122439F28610447004FAA68 /* GetProductListEndpoint.swift */; };
+		F12243A4286106E9004FAA68 /* ProductItemDisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243A3286106E9004FAA68 /* ProductItemDisplayViewModel.swift */; };
+		F12243A628610AE0004FAA68 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243A528610AE0004FAA68 /* IntExtension.swift */; };
+		F12243A828610B42004FAA68 /* ProductItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243A728610B42004FAA68 /* ProductItemTableViewCell.swift */; };
+		F12243AB28610E15004FAA68 /* ProductTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243AA28610E15004FAA68 /* ProductTableHeaderView.swift */; };
 		F190F9512847B237008F4941 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9502847B237008F4941 /* LoginEndpoint.swift */; };
 		F190F9552847B77F008F4941 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9542847B77F008F4941 /* APIConstant.swift */; };
 		F190F9572847BB2B008F4941 /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9562847BB2B008F4941 /* UserContext.swift */; };
@@ -121,6 +126,11 @@
 		F122439828608CF2004FAA68 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		F122439A28608CFE004FAA68 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
 		F122439D28609C94004FAA68 /* ProductEmptyStateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEmptyStateTableViewCell.swift; sourceTree = "<group>"; };
+		F122439F28610447004FAA68 /* GetProductListEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductListEndpoint.swift; sourceTree = "<group>"; };
+		F12243A3286106E9004FAA68 /* ProductItemDisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemDisplayViewModel.swift; sourceTree = "<group>"; };
+		F12243A528610AE0004FAA68 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		F12243A728610B42004FAA68 /* ProductItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemTableViewCell.swift; sourceTree = "<group>"; };
+		F12243AA28610E15004FAA68 /* ProductTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableHeaderView.swift; sourceTree = "<group>"; };
 		F190F9502847B237008F4941 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
 		F190F9542847B77F008F4941 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		F190F9562847BB2B008F4941 /* UserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
@@ -251,6 +261,7 @@
 		F122439428608CBE004FAA68 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F12243A928610DEA004FAA68 /* TableHeaderView */,
 				F122439C28609C81004FAA68 /* TableViewCell */,
 				F122439828608CF2004FAA68 /* ProductsViewController.swift */,
 			);
@@ -261,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				F122439A28608CFE004FAA68 /* ProductsViewModel.swift */,
+				F12243A3286106E9004FAA68 /* ProductItemDisplayViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -269,8 +281,17 @@
 			isa = PBXGroup;
 			children = (
 				F122439D28609C94004FAA68 /* ProductEmptyStateTableViewCell.swift */,
+				F12243A728610B42004FAA68 /* ProductItemTableViewCell.swift */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		F12243A928610DEA004FAA68 /* TableHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				F12243AA28610E15004FAA68 /* ProductTableHeaderView.swift */,
+			);
+			path = TableHeaderView;
 			sourceTree = "<group>";
 		};
 		F190F9582847BBB5008F4941 /* Models */ = {
@@ -294,6 +315,7 @@
 				F1224362285662D7004FAA68 /* GetDashboardStockCategoryEndpoint.swift */,
 				F122438A2858FAED004FAA68 /* GetDashboardSalesGraphEndpoint.swift */,
 				F122438C28591217004FAA68 /* GetDashboardSummaryEndpoint.swift */,
+				F122439F28610447004FAA68 /* GetProductListEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -454,6 +476,7 @@
 				F1B6140128452B49003E4909 /* UIImageExtension.swift */,
 				F190F96F2847CD4B008F4941 /* UIApplicationExtension.swift */,
 				F122436B285793F8004FAA68 /* UIViewExtension.swift */,
+				F12243A528610AE0004FAA68 /* IntExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -699,6 +722,8 @@
 				F1224391285914EA004FAA68 /* DashboardSummaryItemViewCell.swift in Sources */,
 				F190F9652847C262008F4941 /* DashboardViewController.swift in Sources */,
 				F1B613F5283AC0A2003E4909 /* Localization.swift in Sources */,
+				F12243A828610B42004FAA68 /* ProductItemTableViewCell.swift in Sources */,
+				F12243A4286106E9004FAA68 /* ProductItemDisplayViewModel.swift in Sources */,
 				F1224351284B4126004FAA68 /* SideMenuShopTableViewCell.swift in Sources */,
 				F1A8130628009EAD001CB802 /* ReusableViewExtension.swift in Sources */,
 				F122435D28565D4E004FAA68 /* ReportMovementData.swift in Sources */,
@@ -729,12 +754,14 @@
 				F1224355284B61E8004FAA68 /* MenuItemDisplayModel.swift in Sources */,
 				F1A812EA28009AD3001CB802 /* AppDelegate.swift in Sources */,
 				F122439928608CF2004FAA68 /* ProductsViewController.swift in Sources */,
+				F12243A028610447004FAA68 /* GetProductListEndpoint.swift in Sources */,
 				F1A813172800A096001CB802 /* MainViewModel.swift in Sources */,
 				F1224361285662C7004FAA68 /* GetDashboardStockGraphEndpoint.swift in Sources */,
 				F190F9512847B237008F4941 /* LoginEndpoint.swift in Sources */,
 				F1B6140028452AA5003E4909 /* ZortButton.swift in Sources */,
 				F1A8130C2800A006001CB802 /* BaseViewController.swift in Sources */,
 				F1A8130228009BF2001CB802 /* BaseCoordinator.swift in Sources */,
+				F12243AB28610E15004FAA68 /* ProductTableHeaderView.swift in Sources */,
 				F190F9572847BB2B008F4941 /* UserContext.swift in Sources */,
 				F12243852858F8F1004FAA68 /* DashboardSalesGraphTableViewCell.swift in Sources */,
 				F12243782857C24F004FAA68 /* ZortPieChartView.swift in Sources */,
@@ -744,6 +771,7 @@
 				F1A813152800A085001CB802 /* MainCoordinator.swift in Sources */,
 				F122439B28608CFE004FAA68 /* ProductsViewModel.swift in Sources */,
 				F1B613F0283ABF25003E4909 /* LanguageManager.swift in Sources */,
+				F12243A628610AE0004FAA68 /* IntExtension.swift in Sources */,
 				F1A813122800A06B001CB802 /* MainViewController.swift in Sources */,
 				F1B613D5283AA983003E4909 /* UIColorExtension.swift in Sources */,
 				F1B613FC284527F5003E4909 /* StackButtonViewController.swift in Sources */,

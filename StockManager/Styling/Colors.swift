@@ -16,6 +16,7 @@ extension UIColor {
     static var gray400: UIColor { return UIColor(hexString: "#C7C7C7") }
     static var gray500: UIColor { return UIColor(hexString: "#9D9D9D") }
     static var waitingText: UIColor { return UIColor(hexString: "#EA9043") }
+    static var blueText: UIColor { return UIColor(hexString: "#4165ED") }
 
     // Zort Button
     static var zortButtonBG: UIColor { return UIColor(hexString: "#4165ED") }

@@ -32,3 +32,8 @@ DASHBOARD-AVAILABLE_HEADER_TITLE = "คงเหลือ";
 // Products
 PRODUCTS-PAGE_TITLE = "สินค้า";
 PRODUCTS-SEARCH_HINT = "ค้นหาด้วย ชื่อ รหัสสินค้า";
+PRODUCTS-PRODUCT_HEADER_TITLE = "รายการ";
+PRODUCTS-STOCK_HEADER_TITLE = "คงเหลือ";
+PRODUCTS-AVAILABLE_HEADER_TITLE = "พร้อมขาย";
+PRODUCTS-EMPTY_TITLE = "เพิ่มสินค้าใหม่ได้ที่นี่";
+PRODUCTS-EMPTY_DESCRIPTION = "บันทึกข้อมูลสินค้า และระบุจำนวนสินค้าในสต๊อก";

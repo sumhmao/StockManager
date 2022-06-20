@@ -73,6 +73,21 @@ enum Localization {
         static var searchHint: String {
             return "PRODUCTS-SEARCH_HINT".localized()
         }
+        static var productHeaderTitle: String {
+            return "PRODUCTS-PRODUCT_HEADER_TITLE".localized()
+        }
+        static var stockHeaderTitle: String {
+            return "PRODUCTS-STOCK_HEADER_TITLE".localized()
+        }
+        static var availableHeaderTitle: String {
+            return "PRODUCTS-AVAILABLE_HEADER_TITLE".localized()
+        }
+        static var emptyTitle: String {
+            return "PRODUCTS-EMPTY_TITLE".localized()
+        }
+        static var emptyDescription: String {
+            return "PRODUCTS-EMPTY_DESCRIPTION".localized()
+        }
     }
 
 }

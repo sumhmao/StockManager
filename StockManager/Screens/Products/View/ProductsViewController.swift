@@ -47,6 +47,8 @@ final class ProductsViewController: BaseViewController {
             tableView.sectionHeaderTopPadding = 0
         }
         tableView.register(ProductEmptyStateTableViewCell.self)
+        tableView.register(ProductTableHeaderView.self)
+        tableView.register(ProductItemTableViewCell.self)
         return tableView
     }()
 
@@ -133,12 +135,16 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
 
         switch section {
         case .product:
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ProductItemTableViewCell
+            if let data = viewModel.datasource.productDataAt(index: indexPath.row) {
+                cell.configure(withData: data)
+            }
+            return cell
 
         case .empty:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ProductEmptyStateTableViewCell
+            cell.configure()
             return cell
-
         }
     }
 
@@ -154,11 +160,31 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
+        guard let section = viewModel.datasource.sectionAt(index: section) else { return nil }
+
+        switch section {
+        case .product:
+            guard viewModel.datasource.numberOfRowIn(section: section) > 0 else { return nil }
+            return tableView.dequeueReusableHeaderFooter() as ProductTableHeaderView
+            
+        default : return nil
+        }
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
+        guard let section = viewModel.datasource.sectionAt(index: section) else {
+            return CGFloat.leastNormalMagnitude
+        }
+
+        switch section {
+        case .product:
+            guard viewModel.datasource.numberOfRowIn(section: section) > 0 else {
+                return CGFloat.leastNormalMagnitude
+            }
+            return UITableView.automaticDimension
+
+        default: return CGFloat.leastNormalMagnitude
+        }
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
