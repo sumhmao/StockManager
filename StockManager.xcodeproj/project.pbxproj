@@ -46,6 +46,9 @@
 		F12243AB28610E15004FAA68 /* ProductTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243AA28610E15004FAA68 /* ProductTableHeaderView.swift */; };
 		F12243AE28637C6D004FAA68 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243AD28637C6D004FAA68 /* Pagination.swift */; };
 		F12243B02863810F004FAA68 /* ZortLazyLoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243AF2863810F004FAA68 /* ZortLazyLoadingTableViewCell.swift */; };
+		F12243B528638AE2004FAA68 /* AddProductCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243B428638AE2004FAA68 /* AddProductCoordinator.swift */; };
+		F12243B728638AEF004FAA68 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243B628638AEF004FAA68 /* AddProductViewController.swift */; };
+		F12243B928638AFD004FAA68 /* AddProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243B828638AFD004FAA68 /* AddProductViewModel.swift */; };
 		F190F9512847B237008F4941 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9502847B237008F4941 /* LoginEndpoint.swift */; };
 		F190F9552847B77F008F4941 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9542847B77F008F4941 /* APIConstant.swift */; };
 		F190F9572847BB2B008F4941 /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9562847BB2B008F4941 /* UserContext.swift */; };
@@ -135,6 +138,9 @@
 		F12243AA28610E15004FAA68 /* ProductTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableHeaderView.swift; sourceTree = "<group>"; };
 		F12243AD28637C6D004FAA68 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		F12243AF2863810F004FAA68 /* ZortLazyLoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZortLazyLoadingTableViewCell.swift; sourceTree = "<group>"; };
+		F12243B428638AE2004FAA68 /* AddProductCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductCoordinator.swift; sourceTree = "<group>"; };
+		F12243B628638AEF004FAA68 /* AddProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
+		F12243B828638AFD004FAA68 /* AddProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewModel.swift; sourceTree = "<group>"; };
 		F190F9502847B237008F4941 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
 		F190F9542847B77F008F4941 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		F190F9562847BB2B008F4941 /* UserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
@@ -301,8 +307,35 @@
 		F12243AC28637943004FAA68 /* AddProduct */ = {
 			isa = PBXGroup;
 			children = (
+				F12243B328638AC4004FAA68 /* Coordinator */,
+				F12243B128638AB9004FAA68 /* View */,
+				F12243B228638ABF004FAA68 /* ViewModel */,
 			);
 			path = AddProduct;
+			sourceTree = "<group>";
+		};
+		F12243B128638AB9004FAA68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F12243B628638AEF004FAA68 /* AddProductViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F12243B228638ABF004FAA68 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F12243B828638AFD004FAA68 /* AddProductViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F12243B328638AC4004FAA68 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F12243B428638AE2004FAA68 /* AddProductCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		F190F9582847BBB5008F4941 /* Models */ = {
@@ -738,6 +771,7 @@
 				F1B613F5283AC0A2003E4909 /* Localization.swift in Sources */,
 				F12243A828610B42004FAA68 /* ProductItemTableViewCell.swift in Sources */,
 				F12243A4286106E9004FAA68 /* ProductItemDisplayViewModel.swift in Sources */,
+				F12243B728638AEF004FAA68 /* AddProductViewController.swift in Sources */,
 				F1224351284B4126004FAA68 /* SideMenuShopTableViewCell.swift in Sources */,
 				F1A8130628009EAD001CB802 /* ReusableViewExtension.swift in Sources */,
 				F122435D28565D4E004FAA68 /* ReportMovementData.swift in Sources */,
@@ -768,6 +802,7 @@
 				F1A8130828009ED1001CB802 /* StringExtension.swift in Sources */,
 				F190F97A284A1B17008F4941 /* SideMenuViewModel.swift in Sources */,
 				F1224355284B61E8004FAA68 /* MenuItemDisplayModel.swift in Sources */,
+				F12243B528638AE2004FAA68 /* AddProductCoordinator.swift in Sources */,
 				F1A812EA28009AD3001CB802 /* AppDelegate.swift in Sources */,
 				F122439928608CF2004FAA68 /* ProductsViewController.swift in Sources */,
 				F12243A028610447004FAA68 /* GetProductListEndpoint.swift in Sources */,
@@ -780,6 +815,7 @@
 				F12243AB28610E15004FAA68 /* ProductTableHeaderView.swift in Sources */,
 				F190F9572847BB2B008F4941 /* UserContext.swift in Sources */,
 				F12243852858F8F1004FAA68 /* DashboardSalesGraphTableViewCell.swift in Sources */,
+				F12243B928638AFD004FAA68 /* AddProductViewModel.swift in Sources */,
 				F12243782857C24F004FAA68 /* ZortPieChartView.swift in Sources */,
 				F190F95D2847BC93008F4941 /* BaseAPIResponse.swift in Sources */,
 				F1B613FE28452825003E4909 /* UIScrollViewExtension.swift in Sources */,

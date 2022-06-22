@@ -128,7 +128,7 @@ class StackButtonViewController: BaseViewController {
     public func configureLayout(contentInsets: UIEdgeInsets? =  nil,
                                 buttonInsets: UIEdgeInsets? = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16),
                                 spaceBetween space: CGFloat? = nil, buttonSpace: CGFloat? = nil,
-                                buttonAxis: NSLayoutConstraint.Axis = .vertical) {
+                                buttonAxis: NSLayoutConstraint.Axis = .horizontal) {
         if let inset = contentInsets {
             contentStackView.snp.updateConstraints { make in
                 make.top.equalToSuperview().offset(inset.top)
@@ -174,7 +174,7 @@ class StackButtonViewController: BaseViewController {
         }
     }
 
-    public func addButton(_ button: UIButton, height: CGFloat = 46) {
+    public func addButton(_ button: UIButton, height: CGFloat = 49) {
         button.heightAnchor.constraint(equalToConstant: height).isActive = true
         buttonStackView.addArrangedSubview(button)
     }

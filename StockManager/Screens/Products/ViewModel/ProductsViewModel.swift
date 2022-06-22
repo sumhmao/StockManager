@@ -27,11 +27,13 @@ final class ProductsViewModel: ViewModelType {
         let searchText: AnyObserver<String?>
         let refreshData: AnyObserver<Void>
         let fetchMoreData: AnyObserver<Void>
+        let addProductTap: AnyObserver<Void>
     }
     struct Output {
         let showLoading: Observable<Bool>
         let updateData: Observable<Void>
         let onAPIError: Observable<Error>
+        let toAddProduct: Observable<Void>
     }
 
     let input: Input
@@ -45,6 +47,7 @@ final class ProductsViewModel: ViewModelType {
     private let showLoading = PublishSubject<Bool>()
     private let updateData = PublishSubject<Void>()
     private let onAPIError = PublishSubject<Error>()
+    private let toAddProduct = PublishSubject<Void>()
     private let pageSize = 20
     private var pagination: Pagination
     private var isLoading = false
@@ -54,12 +57,14 @@ final class ProductsViewModel: ViewModelType {
         self.input = Input(
             searchText: searchText.asObserver(),
             refreshData: refreshData.asObserver(),
-            fetchMoreData: fetchMoreData.asObserver()
+            fetchMoreData: fetchMoreData.asObserver(),
+            addProductTap: toAddProduct.asObserver()
         )
         self.output = Output(
             showLoading: self.showLoading.asObservable(),
             updateData: self.updateData.asObservable(),
-            onAPIError: self.onAPIError.asObservable()
+            onAPIError: self.onAPIError.asObservable(),
+            toAddProduct: self.toAddProduct.asObservable()
         )
         pagination = Pagination(size: pageSize)
 

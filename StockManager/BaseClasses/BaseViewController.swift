@@ -30,6 +30,19 @@ class BaseViewController: UIViewController {
         viewRendered = true
     }
 
+    func showBackButton() {
+        let backBtn = UIBarButtonItem(image: UIImage(named: "back_arrow"),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(onBackPressed))
+        backBtn.tintColor = .white
+        navigationItem.leftBarButtonItem = backBtn
+    }
+
+    @objc func onBackPressed() {
+        navigationController?.popViewController(animated: true)
+    }
+
     func showSideMenuButton() {
         let menuBtn = UIBarButtonItem(image: UIImage(named: "hamburger"),
                                       style: .plain,
@@ -70,6 +83,20 @@ class BaseViewController: UIViewController {
 
     func hideLoading(completion: (() -> Void)? = nil) {
         LoadingController.hideLoading(completion: completion)
+    }
+
+    func mappingEvent(loading: Observable<Bool>, andAPIError error: Observable<Error>) {
+        loading.subscribe(onNext: { [weak self] (isLoading) in
+            if isLoading {
+                self?.showLoading()
+            } else {
+                self?.hideLoading()
+            }
+        }).disposed(by: disposeBag)
+
+        error.subscribe(onNext: { [weak self] (apiError) in
+            self?.showAlert(title: "Error", message: apiError.localizedDescription)
+        }).disposed(by: disposeBag)
     }
 
 }

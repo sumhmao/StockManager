@@ -90,4 +90,13 @@ enum Localization {
         }
     }
 
+    enum AddProduct {
+        static var pageTitle: String {
+            return "ADD_PRODUCT-PAGE_TITLE".localized()
+        }
+        static var save: String {
+            return "ADD_PRODUCT-SAVE".localized()
+        }
+    }
+
 }

@@ -37,3 +37,7 @@ PRODUCTS-STOCK_HEADER_TITLE = "คงเหลือ";
 PRODUCTS-AVAILABLE_HEADER_TITLE = "พร้อมขาย";
 PRODUCTS-EMPTY_TITLE = "เพิ่มสินค้าใหม่ได้ที่นี่";
 PRODUCTS-EMPTY_DESCRIPTION = "บันทึกข้อมูลสินค้า และระบุจำนวนสินค้าในสต๊อก";
+
+// Add Product
+ADD_PRODUCT-PAGE_TITLE = "เพิ่มสินค้า";
+ADD_PRODUCT-SAVE = "บันทึก";

@@ -37,3 +37,7 @@ PRODUCTS-STOCK_HEADER_TITLE = "Stock";
 PRODUCTS-AVAILABLE_HEADER_TITLE = "Available";
 PRODUCTS-EMPTY_TITLE = "Add new product here";
 PRODUCTS-EMPTY_DESCRIPTION = "Save product information and stock data";
+
+// Add Product
+ADD_PRODUCT-PAGE_TITLE = "Add new product";
+ADD_PRODUCT-SAVE = "SAVE";

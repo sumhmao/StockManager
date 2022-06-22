@@ -8,6 +8,8 @@
 import Foundation
 import RxSwift
 
+typealias CompletionHandler = () -> Void
+
 final class AppCoordinator: BaseCoordinator {
 
     static let sideMenuNotificationKey = "SideMenuNotificationKey"
@@ -17,6 +19,7 @@ final class AppCoordinator: BaseCoordinator {
     private var sideMenuCoordinator: SideMenuCoordinator?
     private var dashboardCoordinator: DashboardCoordinator?
     private var productsCoordinator: ProductsCoordinator?
+    private var addProductCoordinator: AddProductCoordinator?
 
     private var currentMenu: SideMenuItem?
 
@@ -85,7 +88,16 @@ final class AppCoordinator: BaseCoordinator {
 
     private func navigateToProducts() {
         productsCoordinator = ProductsCoordinator(navigationController: navigationController)
+        productsCoordinator?.toAddProduct.subscribe(onNext: { [weak self] (completion) in
+            self?.navigateToAddProduct(completion: completion)
+        }).disposed(by: disposeBag)
         productsCoordinator?.start()
+    }
+
+    private func navigateToAddProduct(completion: @escaping CompletionHandler) {
+        addProductCoordinator = AddProductCoordinator(navigationController: navigationController)
+        addProductCoordinator?.setCompletion(completion)
+        addProductCoordinator?.start()
     }
 
     private func navigateToBranchAndWarehouse() {

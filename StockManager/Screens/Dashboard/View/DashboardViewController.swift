@@ -66,20 +66,13 @@ final class DashboardViewController: BaseViewController {
         tableView.dataSource = self
         tableView.reloadData()
 
-        viewModel.output.showLoading.subscribe(onNext: { [weak self] (loading) in
-            if loading {
-                self?.showLoading()
-            } else {
-                self?.hideLoading()
-            }
-        }).disposed(by: disposeBag)
+        mappingEvent(
+            loading: viewModel.output.showLoading,
+            andAPIError: viewModel.output.onAPIError
+        )
 
         viewModel.output.updateData.subscribe(onNext: { [weak self] (_) in
             self?.tableView.reloadData()
-        }).disposed(by: disposeBag)
-
-        viewModel.output.onAPIError.subscribe(onNext: { [weak self] (error) in
-            self?.showAlert(title: "Error", message: error.localizedDescription)
         }).disposed(by: disposeBag)
     }
 
