@@ -209,4 +209,18 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
         return CGFloat.leastNormalMagnitude
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let section = viewModel.datasource.sectionAt(index: indexPath.section) else { return }
+
+        switch section {
+        case .product:
+            // show product detail screen
+            return
+
+        case .empty:
+            viewModel.input.addProductTap.onNext(())
+
+        default: break
+        }
+    }
 }
