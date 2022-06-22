@@ -12,12 +12,18 @@ final class ProductsCoordinator: BaseCoordinator {
 
     private var productsViewController: ProductsViewController!
     private let disposeBag = DisposeBag()
+    private let updateData = PublishSubject<Void>()
 
     override func start() {
         let viewModel = ProductsViewModel()
+        updateData.bind(to: viewModel.input.refreshData).disposed(by: disposeBag)
         productsViewController = ProductsViewController()
         productsViewController.configure(with: viewModel)
         navigationController.setViewControllers([productsViewController], animated: false)
+    }
+
+    func notifyDataChange() {
+        updateData.onNext(())
     }
 
 }

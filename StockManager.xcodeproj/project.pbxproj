@@ -44,6 +44,8 @@
 		F12243A628610AE0004FAA68 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243A528610AE0004FAA68 /* IntExtension.swift */; };
 		F12243A828610B42004FAA68 /* ProductItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243A728610B42004FAA68 /* ProductItemTableViewCell.swift */; };
 		F12243AB28610E15004FAA68 /* ProductTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243AA28610E15004FAA68 /* ProductTableHeaderView.swift */; };
+		F12243AE28637C6D004FAA68 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243AD28637C6D004FAA68 /* Pagination.swift */; };
+		F12243B02863810F004FAA68 /* ZortLazyLoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12243AF2863810F004FAA68 /* ZortLazyLoadingTableViewCell.swift */; };
 		F190F9512847B237008F4941 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9502847B237008F4941 /* LoginEndpoint.swift */; };
 		F190F9552847B77F008F4941 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9542847B77F008F4941 /* APIConstant.swift */; };
 		F190F9572847BB2B008F4941 /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9562847BB2B008F4941 /* UserContext.swift */; };
@@ -131,6 +133,8 @@
 		F12243A528610AE0004FAA68 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		F12243A728610B42004FAA68 /* ProductItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemTableViewCell.swift; sourceTree = "<group>"; };
 		F12243AA28610E15004FAA68 /* ProductTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableHeaderView.swift; sourceTree = "<group>"; };
+		F12243AD28637C6D004FAA68 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		F12243AF2863810F004FAA68 /* ZortLazyLoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZortLazyLoadingTableViewCell.swift; sourceTree = "<group>"; };
 		F190F9502847B237008F4941 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
 		F190F9542847B77F008F4941 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		F190F9562847BB2B008F4941 /* UserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
@@ -292,6 +296,13 @@
 				F12243AA28610E15004FAA68 /* ProductTableHeaderView.swift */,
 			);
 			path = TableHeaderView;
+			sourceTree = "<group>";
+		};
+		F12243AC28637943004FAA68 /* AddProduct */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddProduct;
 			sourceTree = "<group>";
 		};
 		F190F9582847BBB5008F4941 /* Models */ = {
@@ -484,6 +495,7 @@
 		F1A8130D2800A03B001CB802 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F12243AC28637943004FAA68 /* AddProduct */,
 				F122439228608C9A004FAA68 /* Products */,
 				F190F971284A1ABD008F4941 /* SideMenu */,
 				F1A8130E2800A048001CB802 /* Main */,
@@ -556,6 +568,7 @@
 				F12243772857C24F004FAA68 /* ZortPieChartView.swift */,
 				F122437A2857D02B004FAA68 /* ZortPieChartColorSet.swift */,
 				F12243822858F631004FAA68 /* ZortDropdownView.swift */,
+				F12243AF2863810F004FAA68 /* ZortLazyLoadingTableViewCell.swift */,
 			);
 			path = CustomControls;
 			sourceTree = "<group>";
@@ -576,6 +589,7 @@
 				F1B6140428469102003E4909 /* Endpoint.swift */,
 				F190F9682847C655008F4941 /* APIError.swift */,
 				F190F95C2847BC93008F4941 /* BaseAPIResponse.swift */,
+				F12243AD28637C6D004FAA68 /* Pagination.swift */,
 				F190F95B2847BC79008F4941 /* Endpoints */,
 			);
 			path = Network;
@@ -733,6 +747,7 @@
 				F190F95A2847BBD4008F4941 /* Merchant.swift in Sources */,
 				F190F9702847CD4B008F4941 /* UIApplicationExtension.swift in Sources */,
 				F1224357284FA4EC004FAA68 /* ForgotPasswordEndpoint.swift in Sources */,
+				F12243B02863810F004FAA68 /* ZortLazyLoadingTableViewCell.swift in Sources */,
 				F1224363285662D7004FAA68 /* GetDashboardStockCategoryEndpoint.swift in Sources */,
 				F1224365285666F9004FAA68 /* ReportStockGraphData.swift in Sources */,
 				F122438F285912E0004FAA68 /* DashboardSummaryItemDisplayViewModel.swift in Sources */,
@@ -745,6 +760,7 @@
 				F190F978284A1B06008F4941 /* SideMenuViewController.swift in Sources */,
 				F190F9692847C655008F4941 /* APIError.swift in Sources */,
 				F122435F28565F3E004FAA68 /* GetMovementListEndpoint.swift in Sources */,
+				F12243AE28637C6D004FAA68 /* Pagination.swift in Sources */,
 				F122438D28591217004FAA68 /* GetDashboardSummaryEndpoint.swift in Sources */,
 				F190F9672847C276008F4941 /* DashboardViewModel.swift in Sources */,
 				F12243872858F961004FAA68 /* DashboardReportSalesGraphDisplayViewModel.swift in Sources */,

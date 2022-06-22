@@ -49,6 +49,7 @@ final class ProductsViewController: BaseViewController {
         tableView.register(ProductEmptyStateTableViewCell.self)
         tableView.register(ProductTableHeaderView.self)
         tableView.register(ProductItemTableViewCell.self)
+        tableView.register(ZortLazyLoadingTableViewCell.self)
         return tableView
     }()
 
@@ -61,6 +62,7 @@ final class ProductsViewController: BaseViewController {
     private func initUIComponents() {
         navigationController?.navigationBar.isHidden = false
         showSideMenuButton()
+        showAddButton()
         view.backgroundColor = UIColor.mainBgColor
         view.addSubview(stackView)
         stackView.addArrangedSubview(searchBar)
@@ -90,6 +92,10 @@ final class ProductsViewController: BaseViewController {
     override func localizeItems() {
         self.title = Localization.Products.pageTitle
         tableView.reloadData()
+    }
+
+    override func onAddButtonPressed() {
+
     }
 
     func configure(with viewModel: ProductsViewModel) {
@@ -141,10 +147,23 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return cell
 
+        case .loadMore:
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ZortLazyLoadingTableViewCell
+            return cell
+
         case .empty:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ProductEmptyStateTableViewCell
             cell.configure()
             return cell
+        }
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let section = viewModel.datasource.sectionAt(index: indexPath.section) else { return }
+        switch section {
+        case .loadMore:
+            viewModel.input.fetchMoreData.onNext(())
+        default: break
         }
     }
 
@@ -153,6 +172,8 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
 
         switch section {
         case .product:
+            return UITableView.automaticDimension
+        case .loadMore:
             return UITableView.automaticDimension
         case .empty:
             return tableView.bounds.height

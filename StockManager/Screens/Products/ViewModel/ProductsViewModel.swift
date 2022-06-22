@@ -10,7 +10,8 @@ import RxSwift
 
 enum ProductsDataSection: Int, CaseIterable {
     case product = 0
-    case empty = 1
+    case loadMore = 1
+    case empty = 2
 }
 
 protocol ProductsDataSource {
@@ -24,6 +25,8 @@ final class ProductsViewModel: ViewModelType {
 
     struct Input {
         let searchText: AnyObserver<String?>
+        let refreshData: AnyObserver<Void>
+        let fetchMoreData: AnyObserver<Void>
     }
     struct Output {
         let showLoading: Observable<Bool>
@@ -37,20 +40,28 @@ final class ProductsViewModel: ViewModelType {
 
     private let disposeBag = DisposeBag()
     private let searchText = BehaviorSubject<String?>(value: nil)
+    private let refreshData = PublishSubject<Void>()
+    private let fetchMoreData = PublishSubject<Void>()
     private let showLoading = PublishSubject<Bool>()
     private let updateData = PublishSubject<Void>()
     private let onAPIError = PublishSubject<Error>()
+    private let pageSize = 20
+    private var pagination: Pagination
+    private var isLoading = false
     private var allProducts = [ProductItemDisplayViewModel]()
 
     init() {
         self.input = Input(
-            searchText: searchText.asObserver()
+            searchText: searchText.asObserver(),
+            refreshData: refreshData.asObserver(),
+            fetchMoreData: fetchMoreData.asObserver()
         )
         self.output = Output(
             showLoading: self.showLoading.asObservable(),
             updateData: self.updateData.asObservable(),
             onAPIError: self.onAPIError.asObservable()
         )
+        pagination = Pagination(size: pageSize)
 
         searchText
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
@@ -58,26 +69,43 @@ final class ProductsViewModel: ViewModelType {
             .subscribe(onNext: { [weak self] (text) in
                 self?.doSearch(text: text)
             }).disposed(by: disposeBag)
+
+        refreshData.subscribe(onNext: { [weak self] (_) in
+            self?.searchText.onNext(nil)
+        }).disposed(by: disposeBag)
+
+        fetchMoreData.withLatestFrom(searchText).subscribe(onNext: { [weak self] (text) in
+            self?.doSearch(text: text, refresh: false)
+        }).disposed(by: disposeBag)
     }
 
-    private func doSearch(text: String?) {
-        allProducts.removeAll()
-        updateData.onNext(())
+    private func doSearch(text: String?, refresh: Bool = true) {
+        guard !isLoading else { return }
+        isLoading = true
 
-        guard let text = text, text.trim().count > 0 else { return }
-        showLoading.onNext(true)
+        if refresh {
+            pagination = Pagination(size: pageSize)
+            allProducts.removeAll()
+            updateData.onNext(())
+            showLoading.onNext(true)
+        }
 
-        let param = GetProductListEndpoint.Request(searchText: text)
+        guard pagination.next() else { return }
+
+        let param = GetProductListEndpoint.Request(searchText: text, pagination: pagination)
         GetProductListEndpoint.service.request(parameters: param).subscribe(onNext: { [weak self] (response) in
             let products = response.product.map { (product) -> ProductItemDisplayViewModel in
                 return ProductItemDisplayViewModel(response: product)
             }
             self?.allProducts.append(contentsOf: products)
+            self?.pagination.hasNext(count: self?.allProducts.count ?? 0)
             self?.showLoading.onNext(false)
             self?.updateData.onNext(())
+            self?.isLoading = false
         }, onError: { [weak self] (error) in
             self?.showLoading.onNext(false)
             self?.onAPIError.onNext(error)
+            self?.isLoading = false
         }).disposed(by: disposeBag)
     }
 
@@ -97,6 +125,8 @@ extension ProductsViewModel: ProductsDataSource {
         switch section {
         case .product:
             return allProducts.count
+        case .loadMore:
+            return (!allProducts.isEmpty && pagination.hasNext) ? 1 : 0
         case .empty:
             return allProducts.count > 0 ? 0 : 1
         }
@@ -114,8 +144,8 @@ extension ProductItemDisplayViewModel {
         self.id = response.code ?? ""
         self.title = response.name ?? ""
         self.imageUrl = response.imagepath
-        self.stock = response.stock ?? 0
-        self.available = response.availablestock ?? 0
+        self.stock = Int(response.stock ?? 0)
+        self.available = Int(response.availablestock ?? 0)
         self.deleted = (response.isdeleted ?? 0).boolValue
     }
 

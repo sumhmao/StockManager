@@ -44,6 +44,17 @@ class BaseViewController: UIViewController {
                                         object: nil)
     }
 
+    func showAddButton() {
+        let addBtn = UIBarButtonItem(image: UIImage(named: "nav_add_button"),
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(onAddButtonPressed))
+       addBtn.tintColor = .white
+       navigationItem.rightBarButtonItem = addBtn
+    }
+
+    @objc func onAddButtonPressed() {}
+
     func localizeItems() {}
 
     func showAlert(title: String?, message: String?) {

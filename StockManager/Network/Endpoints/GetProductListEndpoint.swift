@@ -13,7 +13,7 @@ struct GetProductListEndpoint: Endpoint {
     public static let service = GetProductListEndpoint()
     private init() {}
 
-    let url: String = "?method=GETPRODUCTLIST&version=2&isquicksearch=1&page=1&pagesize=20"
+    let url: String = "?method=GETPRODUCTLIST&version=2&isquicksearch=1"
     let method: HTTPMethod = .get
     var headers: HTTPHeaders? = nil
 
@@ -21,13 +21,17 @@ struct GetProductListEndpoint: Endpoint {
         let userid: Int
         let password: String
         let merchantid: Int
-        let quicksearchtext: String
+        let quicksearchtext: String?
+        let page: Int
+        let pagesize: Int
 
-        init(searchText: String) {
+        init(searchText: String?, pagination: Pagination) {
             self.userid = UserContext.shared.merchant?.userId ?? 0
             self.password = UserContext.shared.merchant?.password ?? ""
             self.merchantid = UserContext.shared.merchant?.merchantId ?? 0
             self.quicksearchtext = searchText
+            self.page = pagination.page
+            self.pagesize = pagination.size
         }
     }
 
@@ -44,8 +48,8 @@ struct GetProductListEndpoint: Endpoint {
         let description: String?
         let barcode: String?
         let sellprice: Double?
-        let stock: Int?
-        let availablestock: Int?
+        let stock: Double?
+        let availablestock: Double?
         let categoryname: String?
         let imagepath: String?
         let unittext: String?
