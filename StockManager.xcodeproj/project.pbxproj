@@ -63,6 +63,7 @@
 		F190F976284A1AF8008F4941 /* SideMenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F975284A1AF8008F4941 /* SideMenuCoordinator.swift */; };
 		F190F978284A1B06008F4941 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F977284A1B06008F4941 /* SideMenuViewController.swift */; };
 		F190F97A284A1B17008F4941 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F979284A1B17008F4941 /* SideMenuViewModel.swift */; };
+		F1973EB0286CCC74002E642F /* AddProductScanCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1973EAF286CCC74002E642F /* AddProductScanCodeButton.swift */; };
 		F1A812EA28009AD3001CB802 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A812E928009AD3001CB802 /* AppDelegate.swift */; };
 		F1A812F328009AD5001CB802 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A812F228009AD5001CB802 /* Assets.xcassets */; };
 		F1A812F628009AD5001CB802 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A812F428009AD5001CB802 /* LaunchScreen.storyboard */; };
@@ -155,6 +156,7 @@
 		F190F975284A1AF8008F4941 /* SideMenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCoordinator.swift; sourceTree = "<group>"; };
 		F190F977284A1B06008F4941 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		F190F979284A1B17008F4941 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
+		F1973EAF286CCC74002E642F /* AddProductScanCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductScanCodeButton.swift; sourceTree = "<group>"; };
 		F1A812E628009AD3001CB802 /* StockManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A812E928009AD3001CB802 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1A812F228009AD5001CB802 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				F12243B628638AEF004FAA68 /* AddProductViewController.swift */,
+				F1973EAF286CCC74002E642F /* AddProductScanCodeButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				F1A813172800A096001CB802 /* MainViewModel.swift in Sources */,
 				F1224361285662C7004FAA68 /* GetDashboardStockGraphEndpoint.swift in Sources */,
 				F190F9512847B237008F4941 /* LoginEndpoint.swift in Sources */,
+				F1973EB0286CCC74002E642F /* AddProductScanCodeButton.swift in Sources */,
 				F1B6140028452AA5003E4909 /* ZortButton.swift in Sources */,
 				F1A8130C2800A006001CB802 /* BaseViewController.swift in Sources */,
 				F1A8130228009BF2001CB802 /* BaseCoordinator.swift in Sources */,
@@ -980,6 +984,7 @@
 				DEVELOPMENT_TEAM = SR52JE4SY6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StockManager/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) ต้องการเข้าถึงกล้องของคุณเพื่อใช้ในการสแกนสินค้า";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1009,6 +1014,7 @@
 				DEVELOPMENT_TEAM = SR52JE4SY6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StockManager/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) ต้องการเข้าถึงกล้องของคุณเพื่อใช้ในการสแกนสินค้า";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

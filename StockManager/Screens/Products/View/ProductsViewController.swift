@@ -28,6 +28,8 @@ final class ProductsViewController: BaseViewController {
         textfield.mode = .searchbar
         textfield.placeholder = Localization.Products.searchHint
         textfield.leftImage = UIImage(named: "search_icon")
+        textfield.leftPadding = 10
+        textfield.rightPadding = 10
         return textfield
     }()
 

@@ -13,6 +13,7 @@ target 'StockManager' do
   pod 'IQKeyboardManagerSwift'
   pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
   pod 'Kingfisher'
+  pod 'BarcodeScanner'
   pod 'Wormholy', :configurations => ['Debug']
 
 end

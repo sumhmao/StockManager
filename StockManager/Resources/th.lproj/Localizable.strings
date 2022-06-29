@@ -40,4 +40,16 @@ PRODUCTS-EMPTY_DESCRIPTION = "บันทึกข้อมูลสินค�
 
 // Add Product
 ADD_PRODUCT-PAGE_TITLE = "เพิ่มสินค้า";
+ADD_PRODUCT-PRODUCT_INFO_TITLE = "ข้อมูลสินค้า";
+ADD_PRODUCT-PRODUCT_ID_HINT = "รหัสสินค้า";
+ADD_PRODUCT-PRODUCT_NAME_HINT = "ชื่อสินค้า";
+ADD_PRODUCT-BUYING_PRICE_HINT = "ราคาซื้อ";
+ADD_PRODUCT-SELLING_PRICE_HINT = "ราคาขาย";
+ADD_PRODUCT-BARCODE_HINT = "บาร์โค้ด";
+ADD_PRODUCT-SCAN_BARCODE = "สแกน";
+ADD_PRODUCT-BARCODE_SCANNING = "ลากบาร์โคดไปยังกรอบสีขาวเพื่อสแกน";
+ADD_PRODUCT-BARCODE_PROCESSING = "กำลังประมวลผล...";
+ADD_PRODUCT-BARCODE_UNAUTHORIZE = "ไม่มีสิทธิ์ในการเข้าถึงกล้อง!";
+ADD_PRODUCT-BARCODE_NOT_FOUND = "หาไม่พบ!";
+ADD_PRODUCT-BARCODE_SETTINGS = "ไปตั้งค่าการเข้าถึงกล้อง";
 ADD_PRODUCT-SAVE = "บันทึก";

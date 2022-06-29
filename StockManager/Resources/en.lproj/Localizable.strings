@@ -40,4 +40,16 @@ PRODUCTS-EMPTY_DESCRIPTION = "Save product information and stock data";
 
 // Add Product
 ADD_PRODUCT-PAGE_TITLE = "Add new product";
+ADD_PRODUCT-PRODUCT_INFO_TITLE = "Product Information";
+ADD_PRODUCT-PRODUCT_ID_HINT = "Product id";
+ADD_PRODUCT-PRODUCT_NAME_HINT = "Product name";
+ADD_PRODUCT-BUYING_PRICE_HINT = "Buying price";
+ADD_PRODUCT-SELLING_PRICE_HINT = "Selling price";
+ADD_PRODUCT-BARCODE_HINT = "Barcode";
+ADD_PRODUCT-SCAN_BARCODE = "Scan";
+ADD_PRODUCT-BARCODE_SCANNING = "Put the barcode inside white frame to scan";
+ADD_PRODUCT-BARCODE_PROCESSING = "Processing...";
+ADD_PRODUCT-BARCODE_UNAUTHORIZE = "Can't access your camera!";
+ADD_PRODUCT-BARCODE_NOT_FOUND = "Not Found!";
+ADD_PRODUCT-BARCODE_SETTINGS = "To Camera Settings";
 ADD_PRODUCT-SAVE = "SAVE";

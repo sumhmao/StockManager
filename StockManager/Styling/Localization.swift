@@ -94,6 +94,42 @@ enum Localization {
         static var pageTitle: String {
             return "ADD_PRODUCT-PAGE_TITLE".localized()
         }
+        static var productInfoTitle: String {
+            return "ADD_PRODUCT-PRODUCT_INFO_TITLE".localized()
+        }
+        static var productIdHint: String {
+            return "ADD_PRODUCT-PRODUCT_ID_HINT".localized()
+        }
+        static var productNameHint: String {
+            return "ADD_PRODUCT-PRODUCT_NAME_HINT".localized()
+        }
+        static var buyingPriceHint: String {
+            return "ADD_PRODUCT-BUYING_PRICE_HINT".localized()
+        }
+        static var sellingPriceHint: String {
+            return "ADD_PRODUCT-SELLING_PRICE_HINT".localized()
+        }
+        static var barcodeHint: String {
+            return "ADD_PRODUCT-BARCODE_HINT".localized()
+        }
+        static var scanBarcode: String {
+            return "ADD_PRODUCT-SCAN_BARCODE".localized()
+        }
+        static var barcodeScanning: String {
+            return "ADD_PRODUCT-BARCODE_SCANNING".localized()
+        }
+        static var barcodeProcessing: String {
+            return "ADD_PRODUCT-BARCODE_PROCESSING".localized()
+        }
+        static var barcodeUnauthorize: String {
+            return "ADD_PRODUCT-BARCODE_UNAUTHORIZE".localized()
+        }
+        static var barcodeNotFound: String {
+            return "ADD_PRODUCT-BARCODE_NOT_FOUND".localized()
+        }
+        static var barcodeSettings: String {
+            return "ADD_PRODUCT-BARCODE_SETTINGS".localized()
+        }
         static var save: String {
             return "ADD_PRODUCT-SAVE".localized()
         }

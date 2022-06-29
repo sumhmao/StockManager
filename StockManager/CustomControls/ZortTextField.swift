@@ -11,6 +11,7 @@ import RxCocoa
 
 public enum ZortTextFieldMode: Int {
     case textfield
+    case formTextfield
     case searchbar
 }
 
@@ -37,6 +38,7 @@ public final class ZortTextField: UITextField {
     private var unitTextColor: UIColor = .zortTextfieldText
     private var typingTextColor: UIColor = .zortTextfieldText
     private var errorTextColor: UIColor = .zortTextfieldText
+    private var placeholderTextColor: UIColor = .zortTextfieldHint
     private var borderColor: UIColor = .clear
     private var editingBorderColor: UIColor = .clear
     private var errorBorderColor: UIColor = .clear
@@ -45,6 +47,7 @@ public final class ZortTextField: UITextField {
     public var shouldValidateEmptyField = false
     public var showClearButton = true
     public var appFont = UIFont.boldSukhumvitTadmai(ofSize: 14)
+    public var placeholderFont = UIFont.sukhumvitTadmai(ofSize: 14)
     public var valueChanged = PublishSubject<Bool>()
     public var clearButtonTap = PublishSubject<Void>()
     public var validateState = BehaviorSubject<ZortTextFieldValidateState>(value: .none)
@@ -109,8 +112,8 @@ public final class ZortTextField: UITextField {
         }
     }
 
-    public var leftPadding: CGFloat = 10
-    public var rightPadding: CGFloat = 10
+    public var leftPadding: CGFloat = 15
+    public var rightPadding: CGFloat = 15
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -208,7 +211,8 @@ public final class ZortTextField: UITextField {
 
     private func updateView() {
 
-        if mode == .textfield {
+        switch mode {
+        case .textfield:
             heightAnchor.constraint(equalToConstant: 50).isActive = true
             layer.cornerRadius = 25
             normalBackgroundColor = .white
@@ -224,7 +228,29 @@ public final class ZortTextField: UITextField {
             self.layer.borderColor = self.borderColor.cgColor
             self.font = customFont ?? appFont
             textColor = self.normalTextColor
-        } else if mode == .searchbar {
+            self.placeholderTextColor = .zortTextfieldHint
+            self.placeholderFont = .sukhumvitTadmai(ofSize: 14)
+
+        case .formTextfield:
+            heightAnchor.constraint(equalToConstant: 40).isActive = true
+            layer.cornerRadius = 10
+            normalBackgroundColor = .gray200
+            disabledBackgroundColor = .darkGray
+            self.borderColor = .clear
+            self.tintColor = .zortTextfieldText
+            self.normalTextColor = .zortTextfieldText
+            self.unitTextColor = .zortTextfieldText
+            self.typingTextColor = .zortTextfieldText
+            self.errorTextColor = .zortTextfieldText
+            self.errorBorderColor = .red
+            self.editingBorderColor = .clear
+            self.layer.borderColor = self.borderColor.cgColor
+            self.font = customFont ?? appFont
+            textColor = self.normalTextColor
+            self.placeholderTextColor = .gray500
+            self.placeholderFont = .sukhumvitTadmai(ofSize: 14)
+
+        case .searchbar:
             heightAnchor.constraint(equalToConstant: 40).isActive = true
             layer.cornerRadius = 20
             normalBackgroundColor = .white
@@ -240,6 +266,8 @@ public final class ZortTextField: UITextField {
             self.layer.borderColor = self.borderColor.cgColor
             self.font = customFont ?? appFont
             textColor = self.normalTextColor
+            self.placeholderTextColor = .zortTextfieldHint
+            self.placeholderFont = .sukhumvitTadmai(ofSize: 14)
         }
 
         backgroundColor = isEnabled ? normalBackgroundColor : disabledBackgroundColor
@@ -300,8 +328,8 @@ public final class ZortTextField: UITextField {
         attributedPlaceholder = NSAttributedString(
             string: placeholder != nil ?  placeholder! : "",
             attributes: [
-                NSAttributedString.Key.font: UIFont.sukhumvitTadmai(ofSize: 14),
-                NSAttributedString.Key.foregroundColor: UIColor.zortTextfieldHint
+                NSAttributedString.Key.font: placeholderFont,
+                NSAttributedString.Key.foregroundColor: placeholderTextColor
             ]
         )
     }
