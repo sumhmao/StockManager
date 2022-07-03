@@ -8,6 +8,29 @@
 import UIKit
 import RxSwift
 
+enum SourcePhotoChoices: Int, CaseIterable {
+    case camera = 0
+    case cameraRoll = 1
+
+    var displayTitle: String {
+        switch self {
+        case .camera:
+            return Localization.Shared.cameraSource
+        case .cameraRoll:
+            return Localization.Shared.cameraRollSource
+        }
+    }
+
+    var permissionAsk: String {
+        switch self {
+        case .camera:
+            return Localization.Shared.cameraSourcePermission
+        case .cameraRoll:
+            return Localization.Shared.cameraRollSourcePermission
+        }
+    }
+}
+
 class BaseViewController: UIViewController {
 
     let disposeBag = DisposeBag()
@@ -97,6 +120,38 @@ class BaseViewController: UIViewController {
         error.subscribe(onNext: { [weak self] (apiError) in
             self?.showAlert(title: "Error", message: apiError.localizedDescription)
         }).disposed(by: disposeBag)
+    }
+
+    func showChooseImageSourceDialog(completion: @escaping (SourcePhotoChoices) -> Void) {
+        let choicesDlg = UIAlertController(title: nil, message: Localization.Shared.choosePhotoSource, preferredStyle: .actionSheet)
+        for choice in SourcePhotoChoices.allCases {
+            let action = UIAlertAction(title: choice.displayTitle, style: .default) { (_) in
+                completion(choice)
+            }
+            choicesDlg.addAction(action)
+        }
+        let cancel = UIAlertAction(title: Localization.Shared.cancel, style: .cancel, handler: nil)
+        choicesDlg.addAction(cancel)
+        self.present(choicesDlg, animated: true, completion: nil)
+    }
+
+    func openAppSettingFor(choice: SourcePhotoChoices) {
+        let alert = UIAlertController(title: choice.permissionAsk,
+                                      message: nil,
+                                      preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: Localization.Shared.cancel,
+                                      style: UIAlertAction.Style.default,
+                                      handler: nil))
+        alert.addAction(UIAlertAction(title: Localization.Shared.settings,
+                                      style: UIAlertAction.Style.default,
+                                      handler: { (_) in
+                                        if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                        }
+        }))
+
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

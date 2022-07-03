@@ -8,6 +8,13 @@
 
 // Shared
 SHARED-LOADING = "Loading...";
+SHARED-CANCEL = "Cancel";
+SHARED-SETTINGS = "To Settings";
+SHARED-CHOOSE_PHOTO_SOURCE = "Choose your photo source";
+SHARED-CAMERA_SOURCE = "Camera";
+SHARED-CAMERA_SOURCE_PERMISSION = "StockManager would like to access your camera";
+SHARED-CAMERA_ROLL_SOURCE = "Photo Library";
+SHARED-CAMERA_ROLL_SOURCE_PERMISSION = "StockManager would like to access your photo library";
 
 // Main
 MAIN-EMAIL_HINT = "Email";
@@ -52,4 +59,6 @@ ADD_PRODUCT-BARCODE_PROCESSING = "Processing...";
 ADD_PRODUCT-BARCODE_UNAUTHORIZE = "Can't access your camera!";
 ADD_PRODUCT-BARCODE_NOT_FOUND = "Not Found!";
 ADD_PRODUCT-BARCODE_SETTINGS = "To Camera Settings";
+ADD_PRODUCT-ADD_NEW_PHOTO_LABEL = "Product Image";
+ADD_PRODUCT-DELETE_PHOTO_LABEL = "DELETE";
 ADD_PRODUCT-SAVE = "SAVE";

@@ -51,6 +51,12 @@ public final class ZortTextField: UITextField {
     public var valueChanged = PublishSubject<Bool>()
     public var clearButtonTap = PublishSubject<Void>()
     public var validateState = BehaviorSubject<ZortTextFieldValidateState>(value: .none)
+    public var boolValidation: Observable<Bool> {
+        return validateState.share(replay: 1, scope: .whileConnected).map { [weak self] (state) in
+            guard self?.validation != nil else { return true }
+            return state == .passed
+        }
+    }
     private var currentState: ZortTextFieldValidateState {
         do { return try validateState.value() }
         catch { return .none }

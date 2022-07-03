@@ -95,7 +95,7 @@ final class ProductsViewModel: ViewModelType {
             showLoading.onNext(true)
         }
 
-        guard pagination.next() else { return }
+        guard pagination.hasNext else { return }
 
         let param = GetProductListEndpoint.Request(searchText: text, pagination: pagination)
         GetProductListEndpoint.service.request(parameters: param).subscribe(onNext: { [weak self] (response) in

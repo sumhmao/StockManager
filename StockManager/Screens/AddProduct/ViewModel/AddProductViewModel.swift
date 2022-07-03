@@ -16,6 +16,7 @@ final class AddProductViewModel: ViewModelType {
         let buyingPrice: AnyObserver<String?>
         let sellingPrice: AnyObserver<String?>
         let barcode: AnyObserver<String?>
+        let productImage: AnyObserver<UIImage?>
         let onSave: AnyObserver<Void>
     }
     struct Output {
@@ -33,6 +34,7 @@ final class AddProductViewModel: ViewModelType {
     private let buyingPrice = BehaviorSubject<String?>(value: nil)
     private let sellingPrice = BehaviorSubject<String?>(value: nil)
     private let barcode = BehaviorSubject<String?>(value: nil)
+    private let productImage = BehaviorSubject<UIImage?>(value: nil)
     private let onSave = PublishSubject<Void>()
     private let showLoading = PublishSubject<Bool>()
     private let onAPIError = PublishSubject<Error>()
@@ -45,6 +47,7 @@ final class AddProductViewModel: ViewModelType {
             buyingPrice: buyingPrice.asObserver(),
             sellingPrice: sellingPrice.asObserver(),
             barcode: barcode.asObserver(),
+            productImage: productImage.asObserver(),
             onSave: onSave.asObserver()
         )
         self.output = Output(

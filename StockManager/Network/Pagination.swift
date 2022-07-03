@@ -11,19 +11,17 @@ final class Pagination {
 
     let size: Int
     private(set) var hasNext: Bool = true
-    private(set) var page: Int = 0
     private var count = 0
-    private(set) var offset: Int = 0
+
+    var offset: Int {
+        return page * size
+    }
+    var page: Int {
+        return (count / size) + 1
+    }
 
     init(size: Int = 20) {
         self.size = size
-    }
-
-    func next() -> Bool {
-        guard hasNext else { return false }
-        offset = (page * size)
-        page += 1
-        return true
     }
 
     func hasNext(count: Int) {

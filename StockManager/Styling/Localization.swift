@@ -13,6 +13,27 @@ enum Localization {
         static var loading: String {
             return "SHARED-LOADING".localized()
         }
+        static var cancel: String {
+            return "SHARED-CANCEL".localized()
+        }
+        static var settings: String {
+            return "SHARED-SETTINGS".localized()
+        }
+        static var choosePhotoSource: String {
+            return "SHARED-CHOOSE_PHOTO_SOURCE".localized()
+        }
+        static var cameraSource: String {
+            return "SHARED-CAMERA_SOURCE".localized()
+        }
+        static var cameraSourcePermission: String {
+            return "SHARED-CAMERA_SOURCE_PERMISSION".localized()
+        }
+        static var cameraRollSource: String {
+            return "SHARED-CAMERA_ROLL_SOURCE".localized()
+        }
+        static var cameraRollSourcePermission: String {
+            return "SHARED-CAMERA_ROLL_SOURCE_PERMISSION".localized()
+        }
     }
 
     enum Main {
@@ -129,6 +150,12 @@ enum Localization {
         }
         static var barcodeSettings: String {
             return "ADD_PRODUCT-BARCODE_SETTINGS".localized()
+        }
+        static var addNewPhotoLabel: String {
+            return "ADD_PRODUCT-ADD_NEW_PHOTO_LABEL".localized()
+        }
+        static var deletePhotoLabel: String {
+            return "ADD_PRODUCT-DELETE_PHOTO_LABEL".localized()
         }
         static var save: String {
             return "ADD_PRODUCT-SAVE".localized()

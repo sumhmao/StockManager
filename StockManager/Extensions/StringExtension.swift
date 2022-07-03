@@ -41,4 +41,17 @@ extension String {
         return LanguageManager.sharedInstance.get(self)
     }
 
+    var isCurrencyFormat: Bool {
+        let currencyRegex = "(?=.*?\\d)^\\$?(([1-9]\\d{0,2}(,\\d{3})*)|\\d+)?(\\.\\d{1,2})?$"
+        return NSPredicate(format: "SELF MATCHES %@", currencyRegex).evaluate(with: self)
+    }
+
+    var underlineText: NSAttributedString {
+        let attributeString = NSMutableAttributedString(string: self)
+        attributeString.addAttribute(NSAttributedString.Key.underlineStyle,
+                                     value: NSUnderlineStyle.single.rawValue,
+                                     range: NSMakeRange(0, attributeString.length))
+        return attributeString
+    }
+
 }

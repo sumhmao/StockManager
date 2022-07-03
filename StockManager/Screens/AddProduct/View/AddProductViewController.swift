@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AVKit
+import Photos
 import RxSwift
 import SnapKit
 import BarcodeScanner
@@ -66,7 +68,7 @@ final class AddProductViewController: StackButtonViewController {
         textField.isUserInteractionEnabled = true
         textField.validation = { (text) -> Bool in
             guard let text = text else { return false }
-            return text.trim().count > 0
+            return text.trim().count > 0 && text.isCurrencyFormat
         }
         textField.keyboardType = .numberPad
         return textField
@@ -78,7 +80,7 @@ final class AddProductViewController: StackButtonViewController {
         textField.isUserInteractionEnabled = true
         textField.validation = { (text) -> Bool in
             guard let text = text else { return false }
-            return text.trim().count > 0
+            return text.trim().count > 0 && text.isCurrencyFormat
         }
         textField.keyboardType = .numberPad
         return textField
@@ -99,6 +101,11 @@ final class AddProductViewController: StackButtonViewController {
     private lazy var scanButton: AddProductScanCodeButton = {
         let button = AddProductScanCodeButton()
         return button
+    }()
+
+    private lazy var addPhotoView: AddProductSelectPhotoView = {
+        let view = AddProductSelectPhotoView()
+        return view
     }()
 
     private lazy var saveButton: ZortButton = {
@@ -128,6 +135,7 @@ final class AddProductViewController: StackButtonViewController {
         contentStackView.addContent(view: sellingPriceTextField, spaceAfter: 10)
         contentStackView.addContent(view: barcodeTextField, spaceAfter: 10)
         contentStackView.addContent(view: scanButton, spaceAfter: 35)
+        contentStackView.addContent(view: addPhotoView)
         addButton(saveButton)
 
         contentStackView.snp.makeConstraints { make in
@@ -138,29 +146,18 @@ final class AddProductViewController: StackButtonViewController {
     }
 
     private func initValidator() {
-        let validator1 = Observable<Bool>.combineLatest(
-            productIdTextField.validateState.share(replay: 1, scope: .whileConnected),
-            productNameTextField.validateState.share(replay: 1, scope: .whileConnected)
+        let validation = Observable<Bool>.combineLatest(
+            productIdTextField.boolValidation,
+            productNameTextField.boolValidation,
+            buyingPriceTextField.boolValidation,
+            sellingPriceTextField.boolValidation,
+            barcodeTextField.boolValidation
         ) {
-            (productId, productName) -> Bool in
-            return (productId == .passed) && (productName == .passed)
+            (productId, productName, buyingPrice, sellingPrice, barcode) -> Bool in
+            return productId && productName && buyingPrice && sellingPrice && barcode
         }
 
-        let validator2 = Observable<Bool>.combineLatest(
-            buyingPriceTextField.validateState.share(replay: 1, scope: .whileConnected),
-            sellingPriceTextField.validateState.share(replay: 1, scope: .whileConnected)
-        ) {
-            (buyingPrice, sellingPrice) in
-            return (buyingPrice == .passed) && (sellingPrice == .passed)
-        }
-
-        Observable<Bool>.combineLatest(
-            validator1.share(replay: 1, scope: .whileConnected),
-            validator2.share(replay: 1, scope: .whileConnected),
-            barcodeTextField.validateState.share(replay: 1, scope: .whileConnected)
-        ) { (valid1, valid2, barcode) in
-            return valid1 && valid2 && (barcode == .passed)
-        }.bind(to: saveButton.rx.isEnabled).disposed(by: disposeBag)
+        validation.bind(to: saveButton.rx.isEnabled).disposed(by: disposeBag)
     }
 
     override func localizeItems() {
@@ -197,6 +194,54 @@ final class AddProductViewController: StackButtonViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
 
+    private func openImagePicker() {
+        showChooseImageSourceDialog { [weak self] (choice) in
+            switch choice {
+            case .camera:
+                let status = AVCaptureDevice.authorizationStatus(for: .video)
+                if status == .authorized {
+                    self?.openCamera()
+                } else if status == .notDetermined {
+                    AVCaptureDevice.requestAccess(for: .video) { [weak self] (granted) in
+                        if granted {
+                            self?.openCamera()
+                        }
+                    }
+                } else {
+                    self?.openAppSettingFor(choice: choice)
+                }
+
+            case .cameraRoll:
+                let status = PHPhotoLibrary.authorizationStatus()
+                if status == .authorized {
+                    self?.openCameraRoll()
+                } else if status == .notDetermined {
+                    PHPhotoLibrary.requestAuthorization { [weak self] (status) in
+                        if status == .authorized {
+                            self?.openCameraRoll()
+                        }
+                    }
+                } else {
+                    self?.openAppSettingFor(choice: choice)
+                }
+            }
+        }
+    }
+
+    private func openCamera() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+
+    private func openCameraRoll() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+
     func configure(with viewModel: AddProductViewModel) {
         self.viewModel = viewModel
 
@@ -214,20 +259,41 @@ final class AddProductViewController: StackButtonViewController {
         buyingPriceTextField.rx.text.bind(to: viewModel.input.buyingPrice).disposed(by: disposeBag)
         sellingPriceTextField.rx.text.bind(to: viewModel.input.sellingPrice).disposed(by: disposeBag)
         barcodeTextField.rx.text.bind(to: viewModel.input.barcode).disposed(by: disposeBag)
+        addPhotoView.configure(image: nil)
 
         scanButton.onTap.subscribe(onNext: { [weak self] (_) in
             self?.openBarcodeScanner()
+        }).disposed(by: disposeBag)
+
+        addPhotoView.addImageTap.subscribe(onNext: { [weak self] (_) in
+            self?.openImagePicker()
+        }).disposed(by: disposeBag)
+
+        addPhotoView.deleteImageTap.subscribe(onNext: { [weak self] (_) in
+            self?.viewModel.input.productImage.onNext(nil)
+            self?.addPhotoView.configure(image: nil)
         }).disposed(by: disposeBag)
     }
 
 }
 
-extension AddProductViewController: BarcodeScannerCodeDelegate {
+extension AddProductViewController: BarcodeScannerCodeDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
         barcodeTextField.text = code
         barcodeTextField.validateData()
         navigationController?.popViewController(animated: true)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = (info[.originalImage] as? UIImage) else { return }
+        viewModel.input.productImage.onNext(image)
+        addPhotoView.configure(image: image)
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 
 }
