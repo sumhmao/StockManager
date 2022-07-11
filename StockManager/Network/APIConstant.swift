@@ -17,4 +17,8 @@ struct APIConstant {
         #endif
     }
 
+    static var apiVersion: Int {
+        return 2
+    }
+
 }

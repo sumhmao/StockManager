@@ -13,9 +13,10 @@ struct GetDashboardStockGraphEndpoint: Endpoint {
     public static let service = GetDashboardStockGraphEndpoint()
     private init() {}
 
-    let url: String = "?method=GETDASHBOARDSTOCKGRAPH&version=2"
+    let urlMethod: String = "GETDASHBOARDSTOCKGRAPH"
     let method: HTTPMethod = .get
     var headers: HTTPHeaders? = nil
+    var urlParams: [String : String]? = nil
 
     struct Request: Codable {
         let userid: Int

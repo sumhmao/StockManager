@@ -66,6 +66,7 @@
 		F1973EB0286CCC74002E642F /* AddProductScanCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1973EAF286CCC74002E642F /* AddProductScanCodeButton.swift */; };
 		F1973EB228720034002E642F /* AddProductSelectPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1973EB128720034002E642F /* AddProductSelectPhotoView.swift */; };
 		F1973EB428720608002E642F /* ZortAdjustHeightImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1973EB328720608002E642F /* ZortAdjustHeightImageView.swift */; };
+		F1973EB8287CA02C002E642F /* InsertProductEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1973EB7287CA02C002E642F /* InsertProductEndpoint.swift */; };
 		F1A812EA28009AD3001CB802 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A812E928009AD3001CB802 /* AppDelegate.swift */; };
 		F1A812F328009AD5001CB802 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A812F228009AD5001CB802 /* Assets.xcassets */; };
 		F1A812F628009AD5001CB802 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A812F428009AD5001CB802 /* LaunchScreen.storyboard */; };
@@ -161,6 +162,7 @@
 		F1973EAF286CCC74002E642F /* AddProductScanCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductScanCodeButton.swift; sourceTree = "<group>"; };
 		F1973EB128720034002E642F /* AddProductSelectPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductSelectPhotoView.swift; sourceTree = "<group>"; };
 		F1973EB328720608002E642F /* ZortAdjustHeightImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZortAdjustHeightImageView.swift; sourceTree = "<group>"; };
+		F1973EB7287CA02C002E642F /* InsertProductEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertProductEndpoint.swift; sourceTree = "<group>"; };
 		F1A812E628009AD3001CB802 /* StockManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A812E928009AD3001CB802 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1A812F228009AD5001CB802 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				F122438A2858FAED004FAA68 /* GetDashboardSalesGraphEndpoint.swift */,
 				F122438C28591217004FAA68 /* GetDashboardSummaryEndpoint.swift */,
 				F122439F28610447004FAA68 /* GetProductListEndpoint.swift */,
+				F1973EB7287CA02C002E642F /* InsertProductEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -761,6 +764,7 @@
 				F190F9632847C253008F4941 /* DashboardCoordinator.swift in Sources */,
 				F12243892858F984004FAA68 /* ReportSalesGraphData.swift in Sources */,
 				F1A812FF28009BC6001CB802 /* AppCoordinator.swift in Sources */,
+				F1973EB8287CA02C002E642F /* InsertProductEndpoint.swift in Sources */,
 				F122437D2858E79A004FAA68 /* DashboardStockGraphLegendViewCell.swift in Sources */,
 				F122437F2858F214004FAA68 /* DashboardHeaderTitleView.swift in Sources */,
 				F1B613F2283ABF95003E4909 /* NotificationCenterExtension.swift in Sources */,

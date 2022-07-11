@@ -13,9 +13,10 @@ struct LoginEndpoint: Endpoint {
     public static let service = LoginEndpoint()
     private init() {}
 
-    let url: String = "?method=LOGIN&version=2"
+    let urlMethod: String = "LOGIN"
     let method: HTTPMethod = .post
     var headers: HTTPHeaders? = nil
+    var urlParams: [String : String]? = nil
 
     struct Request: Codable {
         let username: String

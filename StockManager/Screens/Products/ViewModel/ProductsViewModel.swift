@@ -28,6 +28,7 @@ final class ProductsViewModel: ViewModelType {
         let refreshData: AnyObserver<Void>
         let fetchMoreData: AnyObserver<Void>
         let addProductTap: AnyObserver<Void>
+        let productTap: AnyObserver<Int>
     }
     struct Output {
         let showLoading: Observable<Bool>
@@ -48,6 +49,7 @@ final class ProductsViewModel: ViewModelType {
     private let updateData = PublishSubject<Void>()
     private let onAPIError = PublishSubject<Error>()
     private let toAddProduct = PublishSubject<Void>()
+    private let productTap = PublishSubject<Int>()
     private let pageSize = 20
     private var pagination: Pagination
     private var isLoading = false
@@ -58,7 +60,8 @@ final class ProductsViewModel: ViewModelType {
             searchText: searchText.asObserver(),
             refreshData: refreshData.asObserver(),
             fetchMoreData: fetchMoreData.asObserver(),
-            addProductTap: toAddProduct.asObserver()
+            addProductTap: toAddProduct.asObserver(),
+            productTap: productTap.asObserver()
         )
         self.output = Output(
             showLoading: self.showLoading.asObservable(),
@@ -81,6 +84,12 @@ final class ProductsViewModel: ViewModelType {
 
         fetchMoreData.withLatestFrom(searchText).subscribe(onNext: { [weak self] (text) in
             self?.doSearch(text: text, refresh: false)
+        }).disposed(by: disposeBag)
+
+        productTap.subscribe(onNext: { [weak self] (index) in
+            guard let self = self, index >= 0, index < self.allProducts.count else { return }
+            let selectedProduct = self.allProducts[index]
+            print("Product \(selectedProduct.title) is selected")
         }).disposed(by: disposeBag)
     }
 

@@ -13,9 +13,10 @@ struct ForgotPasswordEndpoint: Endpoint {
     public static let service = ForgotPasswordEndpoint()
     private init() {}
 
-    let url: String = "?method=FORGOTPASSWORD&version=2"
+    let urlMethod: String = "FORGOTPASSWORD"
     let method: HTTPMethod = .post
     var headers: HTTPHeaders? = nil
+    var urlParams: [String : String]? = nil
 
     struct Request: Codable {
         let email: String

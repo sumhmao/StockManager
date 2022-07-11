@@ -70,7 +70,7 @@ final class AddProductViewController: StackButtonViewController {
             guard let text = text else { return false }
             return text.trim().count > 0 && text.isCurrencyFormat
         }
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .decimalPad
         return textField
     }()
 
@@ -286,7 +286,7 @@ extension AddProductViewController: BarcodeScannerCodeDelegate, UIImagePickerCon
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = (info[.originalImage] as? UIImage) else { return }
+        guard let image = (info[.originalImage] as? UIImage)?.resizeWithMaxSize() else { return }
         viewModel.input.productImage.onNext(image)
         addPhotoView.configure(image: image)
         picker.dismiss(animated: true, completion: nil)

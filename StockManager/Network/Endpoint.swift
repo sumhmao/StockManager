@@ -9,19 +9,52 @@ import Foundation
 import Alamofire
 import RxSwift
 
+struct ImageUpload {
+    let data: Data
+    let fieldName: String
+    let fileName: String
+    let mimeType: String
+
+    init(data: Data, fieldName: String, fileName: String = "\(UUID().uuidString).jpg", mimeType: String = "image/jpg") {
+        self.data = data
+        self.fieldName = fieldName
+        self.fileName = fileName
+        self.mimeType = mimeType
+    }
+}
+
 protocol Endpoint {
     associatedtype Request: Codable
     associatedtype Response: BaseAPIResponse
 
-    var url: String { get }
+    var urlMethod: String { get }
     var method: HTTPMethod { get }
     var headers: HTTPHeaders? { get }
+    var urlParams: [String: String]? { get }
+
+    func getUrl() -> String
 }
 
 extension Endpoint {
 
-    func request(parameters: Request? = nil) -> Observable<Response> {
-        let newUrl = "\(APIConstant.baseUrl)\(self.url)"
+    func getUrl() -> String {
+        let url = APIConstant.baseUrl
+        guard var urlComp = URLComponents(string: url) else { return url }
+        var queryItems = [URLQueryItem]()
+        queryItems.append(URLQueryItem(name: "method", value: self.urlMethod))
+        queryItems.append(URLQueryItem(name: "version", value: "\(APIConstant.apiVersion)"))
+
+        for (key, value) in urlParams ?? [:] {
+            let query = URLQueryItem(name: key, value: value)
+            queryItems.append(query)
+        }
+
+        urlComp.queryItems = queryItems
+        return urlComp.url?.absoluteString ?? url
+    }
+
+    func request(parameters: Request? = nil, imageUpload: [ImageUpload]? = nil) -> Observable<Response> {
+        let newUrl = getUrl()
         let dataRequest: DataRequest
 
         switch method {
@@ -43,7 +76,10 @@ extension Endpoint {
                             multipartFormData.append(data, withName: key)
                         }
                     }
-
+                }
+                for image in imageUpload ?? [] {
+                    multipartFormData.append(image.data, withName: image.fieldName,
+                                             fileName: image.fileName, mimeType: image.mimeType)
                 }
             }, to: newUrl).validate()
         }
@@ -54,7 +90,7 @@ extension Endpoint {
                 #if DEBUG
                 print("== Network response ==")
                 print(" base url: \(APIConstant.baseUrl)")
-                print(" path: \(self.url)")
+                print(" path: \(self.urlMethod)")
                 if let data = response.data, let body = String(data: data, encoding: .utf8) {
                     print(" body: \(body)")
                 }

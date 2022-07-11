@@ -56,7 +56,7 @@ final class ProductItemTableViewCell: UITableViewCell {
         label.backgroundColor = .clear
         label.font = .sukhumvitTadmai(ofSize: 12)
         label.textColor = .black
-        label.numberOfLines = 0
+        label.numberOfLines = 3
         return label
     }()
 

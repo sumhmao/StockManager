@@ -56,8 +56,40 @@ final class AddProductViewModel: ViewModelType {
             onCompletion: self.onCompletion.asObservable()
         )
 
-        onSave.subscribe(onNext: { [weak self] (_) in
+        onSave.withLatestFrom(Observable.combineLatest(productId, productName, buyingPrice, sellingPrice,
+                                                       barcode, productImage))
+            .subscribe(onNext: { [weak self] (code, name, buyPrice, sellPrice, barcode, productImage) in
+
+                guard let code = code, let name = name, let buyPrice = buyPrice, let sellPrice = sellPrice else {
+                    return
+                }
+                guard let buyingPrice = Double(buyPrice), let sellingPrice = Double(sellPrice) else {
+                    return
+                }
+                
+                self?.insertProduct(code: code, name: name, buyingPrice: buyingPrice, sellingPrice: sellingPrice,
+                                    barCode: barcode, image: productImage?.jpegData(compressionQuality: 1))
+        }).disposed(by: disposeBag)
+    }
+
+    private func insertProduct(code: String, name: String, buyingPrice: Double, sellingPrice: Double,
+                               barCode: String? = nil, image: Data? = nil) {
+
+        showLoading.onNext(true)
+        var imageUpload: [ImageUpload]?
+        if let image = image {
+            imageUpload = [ImageUpload(data: image, fieldName: "image")]
+        }
+        let request = InsertProductEndpoint.Request(code: code, name: name, purchaseprice: buyingPrice,
+                                                    sellprice: sellingPrice, barcode: barCode)
+
+        InsertProductEndpoint.service.request(parameters: request, imageUpload: imageUpload)
+            .subscribe(onNext: { [weak self] (_) in
+            self?.showLoading.onNext(false)
             self?.onCompletion.onNext(())
+        }, onError: { [weak self] (error) in
+            self?.showLoading.onNext(false)
+            self?.onAPIError.onNext(error)
         }).disposed(by: disposeBag)
     }
 

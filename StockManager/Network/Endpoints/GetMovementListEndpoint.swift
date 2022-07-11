@@ -13,9 +13,10 @@ struct GetMovementListEndpoint: Endpoint {
     public static let service = GetMovementListEndpoint()
     private init() {}
 
-    let url: String = "?method=GETMOVEMENTLIST&version=2"
+    let urlMethod: String = "GETMOVEMENTLIST"
     let method: HTTPMethod = .get
     var headers: HTTPHeaders? = nil
+    var urlParams: [String : String]? = nil
 
     struct Request: Codable {
         let userid: Int

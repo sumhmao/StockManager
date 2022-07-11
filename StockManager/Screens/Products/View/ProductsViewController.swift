@@ -216,7 +216,7 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
 
         switch section {
         case .product:
-            // show product detail screen
+            viewModel.input.productTap.onNext(indexPath.row)
             return
 
         case .empty:

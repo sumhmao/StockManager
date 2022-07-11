@@ -13,9 +13,12 @@ struct GetProductListEndpoint: Endpoint {
     public static let service = GetProductListEndpoint()
     private init() {}
 
-    let url: String = "?method=GETPRODUCTLIST&version=2&isquicksearch=1"
+    let urlMethod: String = "GETPRODUCTLIST"
     let method: HTTPMethod = .get
     var headers: HTTPHeaders? = nil
+    var urlParams: [String : String]? = [
+        "isquicksearch": "1"
+    ]
 
     struct Request: Codable {
         let userid: Int

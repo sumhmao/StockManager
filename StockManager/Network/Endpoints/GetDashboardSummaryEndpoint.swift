@@ -13,9 +13,12 @@ struct GetDashboardSummaryEndpoint: Endpoint {
     public static let service = GetDashboardSummaryEndpoint()
     private init() {}
 
-    let url: String = "?method=GETDASHBOARDSUMMARY&version=2&movementtype=1"
+    let urlMethod: String = "GETDASHBOARDSUMMARY"
     let method: HTTPMethod = .get
     var headers: HTTPHeaders? = nil
+    var urlParams: [String : String]? = [
+        "movementtype": "1"
+    ]
 
     struct Request: Codable {
         let userid: Int
