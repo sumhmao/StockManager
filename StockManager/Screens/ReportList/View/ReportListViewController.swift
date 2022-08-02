@@ -104,8 +104,18 @@ extension ReportListViewController: UITableViewDelegate, UITableViewDataSource {
 
         switch section {
         case .link:
-            SelectLinkOptionViewController.showSelectLinkOption(using: self) { choice in
-                
+            guard let linkData = viewModel.datasource.linkAt(index: indexPath.row) else { return }
+            SelectLinkOptionViewController.showSelectLinkOption(using: self) { [weak self] (choice) in
+                guard let self = self else { return }
+
+                switch choice {
+                case .open:
+                    WebViewViewController.openWebsite(url: linkData.url, using: self)
+                case .share:
+                    self.shareText(linkData.url)
+                case .copyUrl:
+                    UIPasteboard.general.string = linkData.url
+                }
             }
         }
     }

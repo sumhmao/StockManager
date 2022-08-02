@@ -154,4 +154,11 @@ class BaseViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
+    func shareText(_ text: String) {
+        let textToShare = [text]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+
 }

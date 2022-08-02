@@ -56,6 +56,7 @@
 		F13BF9662899A5AF00F9E992 /* ReportListLinkTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BF9652899A5AF00F9E992 /* ReportListLinkTableHeaderView.swift */; };
 		F13BF9682899A76800F9E992 /* ReportListLinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BF9672899A76800F9E992 /* ReportListLinkTableViewCell.swift */; };
 		F13BF96A2899AA5900F9E992 /* SelectLinkOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BF9692899AA5900F9E992 /* SelectLinkOptionViewController.swift */; };
+		F13BF96C2899B72600F9E992 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BF96B2899B72600F9E992 /* WebViewViewController.swift */; };
 		F190F9512847B237008F4941 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9502847B237008F4941 /* LoginEndpoint.swift */; };
 		F190F9552847B77F008F4941 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9542847B77F008F4941 /* APIConstant.swift */; };
 		F190F9572847BB2B008F4941 /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190F9562847BB2B008F4941 /* UserContext.swift */; };
@@ -159,6 +160,7 @@
 		F13BF9652899A5AF00F9E992 /* ReportListLinkTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListLinkTableHeaderView.swift; sourceTree = "<group>"; };
 		F13BF9672899A76800F9E992 /* ReportListLinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListLinkTableViewCell.swift; sourceTree = "<group>"; };
 		F13BF9692899AA5900F9E992 /* SelectLinkOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLinkOptionViewController.swift; sourceTree = "<group>"; };
+		F13BF96B2899B72600F9E992 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		F190F9502847B237008F4941 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
 		F190F9542847B77F008F4941 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		F190F9562847BB2B008F4941 /* UserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				F13BF9642899A57800F9E992 /* TableViewCell */,
 				F13BF95D2899A23C00F9E992 /* ReportListViewController.swift */,
 				F13BF9692899AA5900F9E992 /* SelectLinkOptionViewController.swift */,
+				F13BF96B2899B72600F9E992 /* WebViewViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				F1973EB0286CCC74002E642F /* AddProductScanCodeButton.swift in Sources */,
 				F1B6140028452AA5003E4909 /* ZortButton.swift in Sources */,
 				F1A8130C2800A006001CB802 /* BaseViewController.swift in Sources */,
+				F13BF96C2899B72600F9E992 /* WebViewViewController.swift in Sources */,
 				F1A8130228009BF2001CB802 /* BaseCoordinator.swift in Sources */,
 				F12243AB28610E15004FAA68 /* ProductTableHeaderView.swift in Sources */,
 				F190F9572847BB2B008F4941 /* UserContext.swift in Sources */,

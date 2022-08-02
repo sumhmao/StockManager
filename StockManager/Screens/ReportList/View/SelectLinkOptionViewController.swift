@@ -43,8 +43,11 @@ final class SelectLinkOptionViewController: BaseViewController {
         let optionViewController = SelectLinkOptionViewController()
         optionViewController.modalTransitionStyle = .crossDissolve
         optionViewController.modalPresentationStyle = .overCurrentContext
+        optionViewController.completion = completion
         viewController.present(optionViewController, animated: true)
     }
+
+    private var completion: ((LinkMenu) -> Void)?
 
     private lazy var backPanel: UIView = {
         let view = UIView()
@@ -155,6 +158,15 @@ final class SelectLinkOptionViewController: BaseViewController {
                 make.height.equalTo(1)
             }
         }
+
+        view.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer()
+        tap.rx.event.subscribe(onNext: { [weak self] (_) in
+            self?.dismiss(animated: true, completion: {
+                self?.completion?(menu)
+            })
+        }).disposed(by: disposeBag)
+        view.addGestureRecognizer(tap)
 
         return view
     }
