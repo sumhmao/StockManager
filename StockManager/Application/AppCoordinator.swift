@@ -20,6 +20,7 @@ final class AppCoordinator: BaseCoordinator {
     private var dashboardCoordinator: DashboardCoordinator?
     private var productsCoordinator: ProductsCoordinator?
     private var addProductCoordinator: AddProductCoordinator?
+    private var reportListCoordinator: ReportListCoordinator?
 
     private var currentMenu: SideMenuItem?
 
@@ -79,7 +80,9 @@ final class AppCoordinator: BaseCoordinator {
     }
 
     private func navigateToSellList() {
-
+        // to test the report list screen only
+        reportListCoordinator = ReportListCoordinator(navigationController: navigationController)
+        reportListCoordinator?.start()
     }
 
     private func navigateToBuyList() {

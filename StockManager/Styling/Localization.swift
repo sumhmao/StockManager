@@ -162,4 +162,22 @@ enum Localization {
         }
     }
 
+    enum ReportList {
+        static var pageTitle: String {
+            return "REPORT_LIST-PAGE_TITLE".localized()
+        }
+        static var documentListHeader: String {
+            return "REPORT_LIST-DOCUMENT_LIST_HEADER".localized()
+        }
+        static var openLink: String {
+            return "REPORT_LIST-OPEN_LINK".localized()
+        }
+        static var shareLink: String {
+            return "REPORT_LIST-SHARE_LINK".localized()
+        }
+        static var copyLink: String {
+            return "REPORT_LIST-COPY_LINK".localized()
+        }
+    }
+
 }

@@ -62,3 +62,10 @@ ADD_PRODUCT-BARCODE_SETTINGS = "ไปตั้งค่าการเข้า
 ADD_PRODUCT-ADD_NEW_PHOTO_LABEL = "รูปภาพสินค้า";
 ADD_PRODUCT-DELETE_PHOTO_LABEL = "ลบ";
 ADD_PRODUCT-SAVE = "บันทึก";
+
+// Report List
+REPORT_LIST-PAGE_TITLE = "เอกสาร";
+REPORT_LIST-DOCUMENT_LIST_HEADER = "เลือกประเภทเอกสาร";
+REPORT_LIST-OPEN_LINK = "เปิด";
+REPORT_LIST-SHARE_LINK = "แชร์";
+REPORT_LIST-COPY_LINK = "คัดลอกลิ้งก์";
