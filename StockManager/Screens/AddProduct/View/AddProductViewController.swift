@@ -98,6 +98,22 @@ final class AddProductViewController: StackButtonViewController {
         return textField
     }()
 
+    private lazy var calendarTextField: ZortTextField = {
+        let textfield = ZortTextField()
+        textfield.mode = .formTextfield
+        textfield.inputView = datePicker
+        textfield.placeholder = "Date Here"
+        return textfield
+    }()
+
+    private lazy var incrementView: ZortIncrementView = {
+        let view = ZortIncrementView()
+        view.maxValue = 5
+        return view
+    }()
+
+    let datePicker = UIDatePicker()
+
     private lazy var scanButton: AddProductScanCodeButton = {
         let button = AddProductScanCodeButton()
         return button
@@ -122,6 +138,28 @@ final class AddProductViewController: StackButtonViewController {
     }
 
     private func initUIComponents() {
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        datePicker.datePickerMode = .date
+        let calendar = Calendar.current
+        let today = Date()
+        let nextWeek = calendar.date(byAdding: .day, value: 7, to: today)
+        datePicker.minimumDate = today
+        datePicker.maximumDate = nextWeek
+
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.black
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(onDateSelected))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([ spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+
+        calendarTextField.inputAccessoryView = toolBar
+
         navigationController?.navigationBar.isHidden = false
         view.backgroundColor = UIColor.mainBgColor
         showBackButton()
@@ -134,6 +172,8 @@ final class AddProductViewController: StackButtonViewController {
         contentStackView.addContent(view: buyingPriceTextField, spaceAfter: 10)
         contentStackView.addContent(view: sellingPriceTextField, spaceAfter: 10)
         contentStackView.addContent(view: barcodeTextField, spaceAfter: 10)
+        contentStackView.addContent(view: calendarTextField, spaceAfter: 10)
+        contentStackView.addContent(view: incrementView, spaceAfter: 10)
         contentStackView.addContent(view: scanButton, spaceAfter: 35)
         contentStackView.addContent(view: addPhotoView)
         addButton(saveButton)
@@ -143,6 +183,15 @@ final class AddProductViewController: StackButtonViewController {
             make.bottom.equalToSuperview().offset(-28)
             make.right.equalToSuperview().offset(-15)
         }
+    }
+
+    @objc private func onDateSelected() {
+        calendarTextField.endEditing(true)
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.gregorianCalendar
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateString = formatter.string(from: datePicker.date)
+        calendarTextField.text = dateString
     }
 
     private func initValidator() {
@@ -261,6 +310,10 @@ final class AddProductViewController: StackButtonViewController {
         barcodeTextField.rx.text.bind(to: viewModel.input.barcode).disposed(by: disposeBag)
         addPhotoView.configure(image: nil)
 
+        incrementView.quantity.subscribe(onNext: { (quantity) in
+            print("Selected quantity: \(quantity)")
+        }).disposed(by: disposeBag)
+
         scanButton.onTap.subscribe(onNext: { [weak self] (_) in
             self?.openBarcodeScanner()
         }).disposed(by: disposeBag)
@@ -295,5 +348,9 @@ extension AddProductViewController: BarcodeScannerCodeDelegate, UIImagePickerCon
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+
+}
+
+extension AddProductViewController {
 
 }

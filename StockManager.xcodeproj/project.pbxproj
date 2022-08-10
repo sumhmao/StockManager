@@ -106,6 +106,8 @@
 		F1B6140028452AA5003E4909 /* ZortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B613FF28452AA5003E4909 /* ZortButton.swift */; };
 		F1B6140228452B49003E4909 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6140128452B49003E4909 /* UIImageExtension.swift */; };
 		F1B6140528469102003E4909 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6140428469102003E4909 /* Endpoint.swift */; };
+		F1B8AA1428A3EFEE00430493 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8AA1328A3EFED00430493 /* DateExtension.swift */; };
+		F1B8AA1628A3F85400430493 /* ZortIncrementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8AA1528A3F85400430493 /* ZortIncrementView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -213,6 +215,8 @@
 		F1B613FF28452AA5003E4909 /* ZortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZortButton.swift; sourceTree = "<group>"; };
 		F1B6140128452B49003E4909 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		F1B6140428469102003E4909 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		F1B8AA1328A3EFED00430493 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		F1B8AA1528A3F85400430493 /* ZortIncrementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZortIncrementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,6 +607,7 @@
 				F190F96F2847CD4B008F4941 /* UIApplicationExtension.swift */,
 				F122436B285793F8004FAA68 /* UIViewExtension.swift */,
 				F12243A528610AE0004FAA68 /* IntExtension.swift */,
+				F1B8AA1328A3EFED00430493 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -686,6 +691,7 @@
 				F12243822858F631004FAA68 /* ZortDropdownView.swift */,
 				F12243AF2863810F004FAA68 /* ZortLazyLoadingTableViewCell.swift */,
 				F1973EB328720608002E642F /* ZortAdjustHeightImageView.swift */,
+				F1B8AA1528A3F85400430493 /* ZortIncrementView.swift */,
 			);
 			path = CustomControls;
 			sourceTree = "<group>";
@@ -890,6 +896,7 @@
 				F190F97A284A1B17008F4941 /* SideMenuViewModel.swift in Sources */,
 				F1224355284B61E8004FAA68 /* MenuItemDisplayModel.swift in Sources */,
 				F1973EB428720608002E642F /* ZortAdjustHeightImageView.swift in Sources */,
+				F1B8AA1428A3EFEE00430493 /* DateExtension.swift in Sources */,
 				F12243B528638AE2004FAA68 /* AddProductCoordinator.swift in Sources */,
 				F13BF95E2899A23C00F9E992 /* ReportListViewController.swift in Sources */,
 				F1A812EA28009AD3001CB802 /* AppDelegate.swift in Sources */,
@@ -901,6 +908,7 @@
 				F1224361285662C7004FAA68 /* GetDashboardStockGraphEndpoint.swift in Sources */,
 				F190F9512847B237008F4941 /* LoginEndpoint.swift in Sources */,
 				F1973EB0286CCC74002E642F /* AddProductScanCodeButton.swift in Sources */,
+				F1B8AA1628A3F85400430493 /* ZortIncrementView.swift in Sources */,
 				F1B6140028452AA5003E4909 /* ZortButton.swift in Sources */,
 				F1A8130C2800A006001CB802 /* BaseViewController.swift in Sources */,
 				F13BF96C2899B72600F9E992 /* WebViewViewController.swift in Sources */,
